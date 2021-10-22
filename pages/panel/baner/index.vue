@@ -3,7 +3,7 @@
     <div class="box-panel">
       <form>
         <div class="form-group">
-          <label for="get-multi-image">عکس مربوط به بنر را وارد کنید</label>
+          <label for="get-multi-image">در این قسمت فقط قادر به انتخاب یک عکس برای بنر هستید</label>
           <GetMultiImage  :once="true" id="get-multi-image" v-model="file" />
           <small id="emailHelp" class="form-text text-muted"></small>
 
