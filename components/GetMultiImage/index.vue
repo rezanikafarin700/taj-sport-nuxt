@@ -29,15 +29,15 @@
           v-if="!once"
           class="get-multi-image__input"
           type="file"
-          title="افزودن عکس"
+          :title="title1"
           multiple
           @change="addImages"
         />
         <input
-          v-else
+          v-else-if="files.length <= 0"
           class="get-multi-image__input"
           type="file"
-          title="افزودن عکس"
+          :title="title2"
           @change="addImages"
         />
         <div class="get-multi-image__btn-input">
@@ -71,7 +71,9 @@ export default {
   data() {
     return {
       files: [],
-      url: []
+      url: [],
+      title1 : 'افزودن عکس',
+      title2 : 'شما فقط میتوانید یک عکس انتخاب کنید'
     };
   },
 
