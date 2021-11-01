@@ -4,6 +4,8 @@
       <div class="container rtl panel-items">
         <nuxt-link class="menu" tag="div" :to="{ name: 'panel' }">صفحه پنل</nuxt-link>
         <nuxt-link class="menu" tag="div" :to="{ name: 'panel-baner' }">صفحه بنر</nuxt-link>
+        <nuxt-link class="menu" tag="div" :to="{ name: 'panel-baner-AddBanner' }">افزودن بنر</nuxt-link>
+        <nuxt-link class="menu" tag="div" :to="{ name: 'panel-baner-EditBanner' }">ویرایش بنر</nuxt-link>
       </div>
     </div>
   </div>
@@ -11,7 +13,7 @@
 
 <script>
 export default {
-  name: "HeaderPanel"
+  name: "HeaderBanner"
 };
 </script>
 

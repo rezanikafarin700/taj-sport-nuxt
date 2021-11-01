@@ -1,119 +1,98 @@
 <template>
-  <div class="wrapper-small rtl">
-    <div class="box-panel">
-      <form>
-        <div class="form-group">
-          <label for="get-multi-image">در این قسمت فقط قادر به انتخاب یک عکس برای بنر هستید</label>
-          <GetMultiImage  :once="true" id="get-multi-image" v-model="file" />
-          <small id="emailHelp" class="form-text text-muted"></small>
+  <div>
+    <div class="container rtl">
+      <table class="table">
+        <thead>
+          <th><td>شماره</td></th>
+          <th><td>عکس</td></th>
+          <th><td>عنوان</td></th>
+          <th><td>ویرایش</td></th>
+          <th class="parent"><div class="cursor btn-select" @click="goToRoute('panel-baner-AddBanner')">+</div><td>حذف</td></th>
+        </thead>
+        <tbody>
+          <tr :class="{'table-active' : index %2 == 0 }"  v-for="(banner,index) in banners" :key="index">
+            <td>{{ banner.id}}</td>
+            <td><img :src="`http://localhost/Asia/public/images/banners/${banner.id}/${banner.image}`"></td>
+            <td>{{ banner.title}}</td>
+            <td><p  class="cursor">ویرایش</p></td>
+            <td><p  class="cursor" @click="conf">حذف</p></td>
+          </tr>
+        </tbody>
+      </table>
 
-          <div class="space-bottom"></div>
-
-          <label for="demoTitle">عنوان بنر را وارد کنید</label>
-          <input
-            type="text"
-            class="form-control-plaintext"
-            id="demoTitle"
-            v-model="banner.title"
-          />
-          <small id="emailHelp" class="form-text text-muted"></small>
-
-          <div class="space-bottom"></div>
-
-          <label for="demoDescription"
-            >توضیحات لازم مربوط به بنر را وارد کنید</label
-          >
-
-          <textarea
-            v-model="banner.description"
-            class="form-control-plaintext"
-            id="demoDescription"
-            cols="30"
-            rows="10"
-          ></textarea>
-
-          <small id="emailHelp" class="form-text text-muted"></small>
-        </div>
-
-        <div class="space-bottom"></div>
-
-        <div class="btns">
-          <button
-            type="submit"
-            class="btn btn-primary btn-block"
-            @click.prevent="send"
-          >
-            ارسال
-          </button>
-          <button
-            type="button"
-            class="btn btn-secondary"
-            @click="goToRoute('panel')"
-          >
-            بازگشت
-          </button>
-        </div>
-      </form>
     </div>
   </div>
 </template>
 
 <script>
-import GetMultiImage from "@/components/GetMultiImage";
 export default {
   name: "banner",
   layout: "PanelLayout",
 
-  components: {
-    GetMultiImage
-  },
+  components: {},
 
   data() {
     return {
-      banner: {
-        description: "",
-        title: "",
-      },
-      file: []
+      banners: [],
+      url: process.env.BASE_URL,
     };
+  },
+
+  async fetch() {
+    this.banners = await this.$axios.$get(process.env.BASE_URL + "banner");
+  },
+
+  methods:{
+    conf(){
+      const answer = console.log('آیا مخواهید این بنر را پا کنید؟')
+    }
   },
 
   methods: {
     goToRoute(url) {
       this.$router.push({ name: `${url}` });
-    },
-    send() {
-      const vm = this;
-      const fd = new FormData();
-      fd.append("description", vm.banner.description);
-      fd.append("title", vm.banner.title);
-      fd.append("image", vm.file[0]);
-      console.log(fd, "fd");
-      this.$axios({
-        method: "post",
-        url: "http://localhost/Asia/public/api/banner",
-        data: fd,
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
-        .then(res => {
-          console.log(res, "res");
-          vm.$router.push({ name: "index" });
-        })
-        .catch(err => {
-          console.log(err.response.data, "err");
-          vm.errors = err.response.data.errors;
-          vm.showSave = false;
-        });
     }
   }
 };
 </script>
 
 <style lang="scss" scoped>
+
+img {
+  // image-rendering: auto;
+  // image-rendering: crisp-edges;
+  image-rendering: pixelated;
+  width: 50px;
+  height: 50px;
+}
+
+.cursor{
+  cursor: pointer;
+  user-select: none;
+}
+.btn-select{
+  background-color: rgba(0,0,0,0.05);
+  font-weight: bold;
+  padding: .5rem 1rem;
+  border-radius: 4px;
+  white-space: nowrap;
+  display: inline-block;
+}
+
 small {
   display: block;
+}
+
+.parent{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  align-items: center;
+
+}
+th{
+  padding-bottom: .5rem;
+  border-bottom-width: 0;
 }
 
 label {

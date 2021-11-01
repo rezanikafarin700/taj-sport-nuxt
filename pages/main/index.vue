@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>سلام</h1>
+    <h1></h1>
     <!-- <header-slider-by-button :images="images" /> -->
   </div>
 </template>
@@ -14,7 +14,8 @@ export default {
   },
   data() {
     return {
-      images: []
+      images: [],
+      a : ''
     };
   },
   mounted() {

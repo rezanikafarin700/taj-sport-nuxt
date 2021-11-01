@@ -25,10 +25,22 @@
 <script>
 import HeaderSliderByButton from "@/components/HeaderSliderByButton";
 export default {
+  head() {
+    return {
+      title: "فوتبال دستی تاج اسپرت",
+      meta: {
+        hid: "description",
+        name: "description",
+        content: "خرید فوتبال دستی مناسب"
+      }
+    };
+  },
+
   name: "index",
   components: {
     HeaderSliderByButton
   },
+
   data() {
     return {
       banners: []
