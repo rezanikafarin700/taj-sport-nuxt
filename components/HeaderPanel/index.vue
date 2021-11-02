@@ -2,8 +2,10 @@
   <div>
     <div class="header">
       <div class="container rtl panel-items">
+        <nuxt-link class="menu" tag="div" :to="{ name: 'index' }">صفحه اصلی</nuxt-link>
         <nuxt-link class="menu" tag="div" :to="{ name: 'panel' }">صفحه پنل</nuxt-link>
         <nuxt-link class="menu" tag="div" :to="{ name: 'panel-baner' }">صفحه بنر</nuxt-link>
+        <nuxt-link class="menu" tag="div" :to="{ name: 'panel-article' }">صفحه مقاله</nuxt-link>
       </div>
     </div>
   </div>

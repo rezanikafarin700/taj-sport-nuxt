@@ -19,38 +19,63 @@
         </p>
       </div>
     </div>
+    <div class="parent-items space">
+      <div class="parent-items__parent-logo">
+        <logo />
+      </div>
+      <div class="title-items">انواع فوتبال دستی</div>
+      <div class="space"></div>
+      <div class="wrapper">
+        <div class="parent-items__items">
+          <div
+            class="parent-items__item"
+            v-for="(foosball, index) in firstSeriesOfArticles"
+            :key="index"
+          >
+            <card-intro :product="foosball" />
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
 import HeaderSliderByButton from "@/components/HeaderSliderByButton";
-export default {
-  head() {
-    return {
-      title: "فوتبال دستی تاج اسپرت",
-      meta: {
-        hid: "description",
-        name: "description",
-        content: "خرید فوتبال دستی مناسب"
-      }
-    };
-  },
+import CartIntro from "@/components/CardIntro";
+import Logo from "@/components/Logo.vue";
+import axios from "axios";
 
+export default {
   name: "index",
   components: {
-    HeaderSliderByButton
+    HeaderSliderByButton,
+    Logo,
+    CartIntro
   },
-
   data() {
     return {
-      banners: []
+      banners: [],
+      articles: []
     };
   },
+  computed: {
+    firstSeriesOfArticles: function() {
+      return this.articles.splice(0,4);
+    },
+    secondSeriesOfArticles : function(){
+      return this.articles.splice(4,4);
+    }
+  },
   mounted() {
-    this.$axios.get("http://localhost/Asia/public/api/banner").then(res => {
-      this.banners = res.data;
-      console.log("res = ", this.banners);
-    });
+    const request1 = axios.get(process.env.BASE_URL + "banner");
+    const request2 = axios.get(process.env.BASE_URL + "article");
+    axios.all([request1, request2]).then(
+      axios.spread((...responses) => {
+        this.banners = responses[0].data;
+        this.articles = responses[1].data;
+      })
+    );
   }
 };
 </script>
