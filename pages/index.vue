@@ -37,6 +37,36 @@
         </div>
       </div>
     </div>
+
+    <div
+      class="background-article"
+      
+    >
+      <div class="wrapper">
+        <div class="space"></div>
+        <div class="title-items" style="color : #ffffff">
+          نکات مهم هنگام خرید فوتبال دستی
+        </div>
+        <div class="space"></div>
+        <div class="background-article__pages">
+          <div class="background-article__page">
+            <p v-for="(note, index) in notesPage1" :key="index">
+              <span class="bold"> {{ note.title }}</span>
+              {{ note.description }}
+            </p>
+            <div class="page-number">صفحه یک</div>
+          </div>
+          <div class="background-article__page">
+            <p v-for="(note, index) in notesPage2" :key="index">
+              <span class="bold"> {{ note.title }}</span>
+              {{ note.description }}
+            </p>
+
+            <div class="page-number">صفحه دو</div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,6 +75,7 @@ import HeaderSliderByButton from "@/components/HeaderSliderByButton";
 import CartIntro from "@/components/CardIntro";
 import Logo from "@/components/Logo.vue";
 import axios from "axios";
+import { notesPage1, notesPage2 } from "./variables";
 
 export default {
   name: "index",
@@ -56,15 +87,17 @@ export default {
   data() {
     return {
       banners: [],
-      articles: []
+      articles: [],
+      notesPage1,
+      notesPage2
     };
   },
   computed: {
     firstSeriesOfArticles: function() {
-      return this.articles.splice(0,4);
+      return this.articles.splice(0, 4);
     },
-    secondSeriesOfArticles : function(){
-      return this.articles.splice(4,4);
+    secondSeriesOfArticles: function() {
+      return this.articles.splice(4, 4);
     }
   },
   mounted() {
