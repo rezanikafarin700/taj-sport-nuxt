@@ -37,3 +37,13 @@ body{
 .panel-items{
     display: flex;
 }
+
+.space{
+    padding: 50px 0;
+}
+.center{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+    align-items: center;
+}

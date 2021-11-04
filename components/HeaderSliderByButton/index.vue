@@ -6,7 +6,9 @@
           <div
             class="parent__slide"
             v-if="index == i"
-            :style="{ backgroundImage: `url(http://localhost/Asia/public/images/banners/${image.id}/${image.image})` }"
+            :style="{
+              backgroundImage: `url(${url}${image.id}/${image.image})`
+            }"
           >
             <transition name="translate">
               <div class="parent__texts" v-if="showTexts">
@@ -102,11 +104,15 @@ export default {
   props: {
     height: {
       type: Number,
-      default: 650,
+      default: 650
     },
     images: {
-      type: Array,
+      type: Array
     },
+    url: {
+      type: String,
+      default: process.env.IMAGE_URL + "banners/"
+    }
   },
 
   data() {
@@ -114,7 +120,7 @@ export default {
       index: 0,
       showTexts: true,
       showBtns: true,
-      showScroll: false,
+      showScroll: false
     };
   },
 
@@ -141,7 +147,7 @@ export default {
 
     scrollTop() {
       document.documentElement.scrollTop = 0;
-    },
+    }
   },
 
   mounted() {
@@ -157,7 +163,7 @@ export default {
         vm.showScroll = false;
       }
     };
-  },
+  }
 };
 </script>
 

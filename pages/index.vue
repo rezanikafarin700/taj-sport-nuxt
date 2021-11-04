@@ -23,7 +23,7 @@
       <div class="parent-items__parent-logo">
         <logo />
       </div>
-      <div class="title-items">انواع فوتبال دستی</div>
+      <div class="title-items center">انواع فوتبال دستی</div>
       <div class="space"></div>
       <div class="wrapper">
         <div class="parent-items__items">
@@ -38,14 +38,12 @@
       </div>
     </div>
 
-    <div
-      class="background-article"
-      
-    >
+    <div class="background-article">
       <div class="wrapper">
-        <div class="space"></div>
         <div class="title-items" style="color : #ffffff">
-          نکات مهم هنگام خرید فوتبال دستی
+          <div class="space"></div>
+
+          <div class="center">نکات مهم هنگام خرید فوتبال دستی</div>
         </div>
         <div class="space"></div>
         <div class="background-article__pages">
@@ -67,6 +65,48 @@
         </div>
       </div>
     </div>
+
+    <div class="container-cards">
+      <div class="wrapper">
+        <div class="title-items center">آشنایی با محصولات آسیا</div>
+        <div class="space"></div>
+        <div class="cards">
+          <div
+            class="cards__card"
+            v-for="(product, index) in products"
+            :key="index"
+          >
+            <card :product="product" />
+          </div>
+        </div>
+
+        <div class="spinner center" v-if="products.length == 0">
+          <img width="90" height="60" src="~assets/images/gif/spinner.gif" />
+        </div>
+      </div>
+    </div>
+
+    <div class="wrapper">
+      <div class="article space">
+        <div
+          class="article__image"
+          :style="{ backgroundImage: `url(images/articles/6.jpg)` }"
+        >
+          <div class="article__image--ratio">
+            <img
+              src="~assets/images/articles/6.jpg"
+              alt="فوتبال دستی و خاطرات"
+            />
+          </div>
+        </div>
+        <div class="article__text">
+          <div class="title-items">خاطرات ماندگار</div>
+          <div class="article__intro">
+            <p v-for="(p, index) in para" :key="index">{{ p }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -75,7 +115,7 @@ import HeaderSliderByButton from "@/components/HeaderSliderByButton";
 import CartIntro from "@/components/CardIntro";
 import Logo from "@/components/Logo.vue";
 import axios from "axios";
-import { notesPage1, notesPage2 } from "./variables";
+import { notesPage1, notesPage2, para } from "./variables";
 
 export default {
   name: "index",
@@ -88,8 +128,10 @@ export default {
     return {
       banners: [],
       articles: [],
+      products: [],
       notesPage1,
-      notesPage2
+      notesPage2,
+      para
     };
   },
   computed: {
@@ -103,10 +145,12 @@ export default {
   mounted() {
     const request1 = axios.get(process.env.BASE_URL + "banner");
     const request2 = axios.get(process.env.BASE_URL + "article");
-    axios.all([request1, request2]).then(
+    const request3 = axios.get(process.env.BASE_URL + "products");
+    axios.all([request1, request2, request3]).then(
       axios.spread((...responses) => {
         this.banners = responses[0].data;
         this.articles = responses[1].data;
+        this.products = responses[2].data;
       })
     );
   }

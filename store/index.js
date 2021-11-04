@@ -1,5 +1,8 @@
-export const state = ({
-})
+export const state = ()=>{
+    return {
+        
+    }
+}
 
 export const getters = {};
 
