@@ -19,13 +19,13 @@
         </p>
       </div>
     </div>
-    <!-- <div class="wrapper">
-      <div class="parent-items">
-        <div class="parent-items__parent-logo">
-          <logo />
-        </div>
-        <div class="title-items center">انواع فوتبال دستی</div>
-        <div class="space"></div> 
+    <div class="parent-items">
+      <div class="space"></div>
+      <div class="parent-items__parent-logo">
+        <logo />
+      </div>
+      <div class="title-items center">انواع فوتبال دستی</div>
+      <div class="wrapper">
         <div class="parent-items__items">
           <div
             class="parent-items__item"
@@ -36,15 +36,14 @@
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
 
-    <!-- <div class="space"></div> 
-     <div class="container-products-intro">
+    <div class="container-products-intro">
       <div class="wrapper">
-        <ProductIntro  :products="products"/>
+        <ProductIntro :products="products" />
       </div>
-    </div> 
-    <div class="space"></div> -->
+    </div>
+    <div class="space"></div>
 
     <div class="background-article">
       <div class="wrapper">
@@ -74,7 +73,7 @@
       </div>
     </div>
 
-    <!-- <div class="container-cards">
+    <div class="container-cards">
       <div class="wrapper">
         <div class="title-items center">آشنایی با محصولات تاج اسپرت</div>
         <div class="space"></div>
@@ -92,7 +91,7 @@
           <img width="90" height="60" src="~assets/images/gif/spinner.gif" />
         </div>
       </div>
-    </div> -->
+    </div>
 
     <div class="wrapper">
       <div class="article space">
@@ -116,7 +115,7 @@
       </div>
     </div>
 
-    <!-- <div class="parent-items space">
+    <div class="parent-items space">
       <div class="parent-items__parent-logo">
         <logo />
       </div>
@@ -134,7 +133,7 @@
         </div>
       </div>
     </div>
-    <div class="space"></div> --> -->
+    <div class="space"></div>
   </div>
 </template>
 
