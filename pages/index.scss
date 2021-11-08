@@ -1,3 +1,4 @@
+@import "@/assets/sass/variables/color_variable";
 .test {
   width: 350px;
 }
@@ -11,7 +12,7 @@
     width: 360px;
     flex: 0 0 auto;
     &--ratio {
-      padding-top: 100%;
+      padding-top: 80%;
       position: relative;
 
       img {
@@ -20,7 +21,7 @@
         object-fit: cover;
         image-rendering: pixelated;
         position: absolute;
-        top : 0;
+        top: 0;
         left: 0;
       }
     }
@@ -161,6 +162,11 @@
 .container-cards {
   padding: 50px 0;
   background: #e5e5e5;
+}
+
+.container-products-intro {
+  background-color: $background-product;
+  padding: 100px;
 }
 
 @media (max-width: 320px) {

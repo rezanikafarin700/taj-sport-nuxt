@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="parent">
+    <div class="parent" :class="[{'border-banner' : borderBanner },{'parent__overlay' : borderBanner }]">
       <div class="parent__slider" v-for="(image, i) in images" :key="i">
         <transition name="fade">
           <div
@@ -120,7 +120,8 @@ export default {
       index: 0,
       showTexts: true,
       showBtns: true,
-      showScroll: false
+      showScroll: false,
+      borderBanner : false,
     };
   },
 
@@ -157,10 +158,12 @@ export default {
         vm.showTexts = false;
         vm.showBtns = false;
         vm.showScroll = true;
+        vm.borderBanner = true;
       } else {
         vm.showTexts = true;
         vm.showBtns = true;
         vm.showScroll = false;
+        vm.borderBanner = false;
       }
     };
   }

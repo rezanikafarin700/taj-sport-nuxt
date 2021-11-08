@@ -1,0 +1,21 @@
+@import '../../assets/sass/variables/variables';
+
+@mixin  responsive{
+  @each $min-size, $max-size, $d in(300, 320, 100), (321, 480, 100),
+    (481, 600, 100), (601, 768, 50), (769, 900, 33.33), (901, 1024, 25),
+    (1025, 1200, 25)
+  {
+    @media (min-width: $min-size+"px") and (max-width: $max-size+"px") {
+      .items__item {
+        width: calc(#{$d}% - #{$margin * 2});
+      }
+      .wrapper {
+        @if ($min-size > 320) and ($max-size >601) {
+          width: #{$min-size}px;
+        } @else if($max-size > 601) {
+          width: #{$min-size - 100}px;
+        }
+      }
+    }
+  }
+}

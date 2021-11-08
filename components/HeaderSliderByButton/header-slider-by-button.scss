@@ -28,6 +28,7 @@
   border: 20px solid #ffffff;
   border-top: none;
   border-bottom: none;
+  transition: all .5s;
 
 
   &__slider {
@@ -146,6 +147,9 @@
   opacity: 0;
 }
 
+.border-banner{
+  border-color: rgb(238, 232, 232);
+}
 
 @media (max-width: 768px) {
   .parent {

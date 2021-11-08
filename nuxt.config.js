@@ -1,3 +1,5 @@
+import { Navigation } from "swiper";
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -22,12 +24,14 @@ export default {
     '~/assets/fonts/Vazir.css',
     '~/assets/fonts/dastnevis.css',
     '~/assets/css/style.css',
-    '@/assets/scss/custom.scss'
+    '@/assets/scss/custom.scss',
+    '@/assets/css/swiper.css'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/bootstrap.js'
+    '~/plugins/bootstrap.js',
+    { src: '@/plugins/vue-awesome-swiper', mode: 'client' }
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

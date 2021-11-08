@@ -19,13 +19,13 @@
         </p>
       </div>
     </div>
-    <div class="parent-items space">
-      <div class="parent-items__parent-logo">
-        <logo />
-      </div>
-      <div class="title-items center">انواع فوتبال دستی</div>
-      <div class="space"></div>
-      <div class="wrapper">
+    <!-- <div class="wrapper">
+      <div class="parent-items">
+        <div class="parent-items__parent-logo">
+          <logo />
+        </div>
+        <div class="title-items center">انواع فوتبال دستی</div>
+        <div class="space"></div> 
         <div class="parent-items__items">
           <div
             class="parent-items__item"
@@ -36,7 +36,15 @@
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
+
+    <!-- <div class="space"></div> 
+     <div class="container-products-intro">
+      <div class="wrapper">
+        <ProductIntro  :products="products"/>
+      </div>
+    </div> 
+    <div class="space"></div> -->
 
     <div class="background-article">
       <div class="wrapper">
@@ -66,9 +74,9 @@
       </div>
     </div>
 
-    <div class="container-cards">
+    <!-- <div class="container-cards">
       <div class="wrapper">
-        <div class="title-items center">آشنایی با محصولات آسیا</div>
+        <div class="title-items center">آشنایی با محصولات تاج اسپرت</div>
         <div class="space"></div>
         <div class="cards">
           <div
@@ -84,7 +92,7 @@
           <img width="90" height="60" src="~assets/images/gif/spinner.gif" />
         </div>
       </div>
-    </div>
+    </div> -->
 
     <div class="wrapper">
       <div class="article space">
@@ -102,11 +110,31 @@
         <div class="article__text">
           <div class="title-items">خاطرات ماندگار</div>
           <div class="article__intro">
-            <p v-for="(p, index) in para" :key="index">{{ p }}</p>
+            <p v-for="(p, index) in para" :key="index">{{ p.text }}</p>
           </div>
         </div>
       </div>
     </div>
+
+    <!-- <div class="parent-items space">
+      <div class="parent-items__parent-logo">
+        <logo />
+      </div>
+      <div class="title-items center">انواع فوتبال دستی</div>
+      <div class="space"></div>
+      <div class="wrapper">
+        <div class="parent-items__items">
+          <div
+            class="parent-items__item"
+            v-for="(foosball, index) in secondSeriesOfArticles"
+            :key="index"
+          >
+            <card-intro :product="foosball" />
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="space"></div> --> -->
   </div>
 </template>
 
@@ -114,6 +142,7 @@
 import HeaderSliderByButton from "@/components/HeaderSliderByButton";
 import CartIntro from "@/components/CardIntro";
 import Logo from "@/components/Logo.vue";
+import ProductIntro from "@/components/ProductInro";
 import axios from "axios";
 import { notesPage1, notesPage2, para } from "./variables";
 
@@ -122,25 +151,19 @@ export default {
   components: {
     HeaderSliderByButton,
     Logo,
-    CartIntro
+    CartIntro,
+    ProductIntro
   },
   data() {
     return {
       banners: [],
-      articles: [],
       products: [],
       notesPage1,
       notesPage2,
-      para
+      para,
+      firstSeriesOfArticles: [],
+      secondSeriesOfArticles: []
     };
-  },
-  computed: {
-    firstSeriesOfArticles: function() {
-      return this.articles.splice(0, 4);
-    },
-    secondSeriesOfArticles: function() {
-      return this.articles.splice(4, 4);
-    }
   },
   mounted() {
     const request1 = axios.get(process.env.BASE_URL + "banner");
@@ -149,7 +172,8 @@ export default {
     axios.all([request1, request2, request3]).then(
       axios.spread((...responses) => {
         this.banners = responses[0].data;
-        this.articles = responses[1].data;
+        this.firstSeriesOfArticles = responses[1].data.splice(0, 4);
+        this.secondSeriesOfArticles = responses[1].data.splice(0, 4);
         this.products = responses[2].data;
       })
     );
