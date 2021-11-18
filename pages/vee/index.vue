@@ -1,57 +1,56 @@
 <template>
   <div class="container d-flex justify-content-center">
     <div class="container-box">
-      <nuxt-link to="/">LOgin </nuxt-link>
+      <nuxt-link to="/">LOgin
+        <!-- <img
+          src="@/assets/img/logo.PNG"
+          alt="logo"
+          class="logo"
+          loading="lazy"
+        /> -->
+      </nuxt-link>
       <div class="title">ورود</div>
       <ValidationObserver ref="form" v-slot="{ handleSubmit }">
         <form class="form" @submit.prevent="handleSubmit(send)">
           <ValidationProvider
-            name="عکس"
-            rules="required|min:1,max:1"
-            v-slot="{ errors }"
-          >
-            <label for="get-multi-image"
-              >در این قسمت فقط قادر به انتخاب یک عکس برای مقاله هستید</label
-            >
-            <GetMultiImage :once="true" id="get-multi-image" v-model="file" />
-            <div class="invalid">{{ errors[0] }}</div>
-          </ValidationProvider>
-
-          <ValidationProvider
-            name="عنوان"
+            name="کد ملی"
             rules="required|numeric|min:10"
             v-slot="{ errors }"
           >
             <label for="label-input" class="label-input">
-              عنوان مقاله را وارد کنید
+              کد ملی خود را وارد کنید
             </label>
             <input
               type="text"
               class="input"
               style="margin-bottom: 12px; !important"
               autocomplete="on"
-              v-model="article.title"
+              v-model="form.nationalCode"
             />
             <div class="invalid">{{ errors[0] }}</div>
           </ValidationProvider>
           <ValidationProvider
-            name="توضیحات"
+            name="رمز عبور"
             rules="required|min:8"
             v-slot="{ errors }"
           >
             <label for="label-input" class="label-input">
-              توضیحات مربوط به مقاله را وارد کنید
+              رمز عبور خود را وارد کنید
+              <!-- <span class="small">
+                (ترکیب حروف بزرگ و کوچک انگلیسی , اعداد و علامت های خاص #?!@$
+                %^&*-)
+              </span> -->
             </label>
 
-            <textarea
+            <input
+              type="password"
               class="input"
               autocomplete="on"
-              v-model="article.description"
-            >
-            </textarea>
+              v-model="form.password"
+            />
             <div class="invalid">{{ errors[0] }}</div>
           </ValidationProvider>
-          <button @submit.prevent="handleSubmit(send)" type="submit" class="btn btn-primary form-btn">
+          <button class="btn btn-primary form-btn">
             ورود به سامانه سجامکس
           </button>
         </form>
@@ -77,15 +76,14 @@
 import utils from "@/assets/js/utils.js";
 
 export default {
-  name: "AddArticle",
+  name: "login",
   layout: "account",
   data() {
     return {
-      article: {
-        description: "",
-        title: ""
-      },
-      file: []
+      form: {
+        nationalCode: "",
+        password: ""
+      }
     };
   },
   methods: {
@@ -97,32 +95,40 @@ export default {
       this.$router.push("/recovery");
     },
 
-    send() {
-      console.log('SEND.....');
-      const vm = this;
-      const fd = new FormData();
-      fd.append("description", vm.article.description);
-      fd.append("title", vm.article.title);
-      fd.append("image", vm.file[0]);
-      console.log(fd, "fd");
-      this.$axios({
-        method: "post",
-        url: process.env.BASE_URL + "article",
-        data: fd,
-        headers: {
-          "Content-Type": "multipart/form-data"
-        }
-      })
-        .then(res => {
-          console.log(res, "res");
-          vm.$router.push({ name: "index" });
-        })
-        .catch(err => {
-          console.log(err.response.data, "err");
-          vm.errors = err.response.data.errors;
-          vm.showSave = false;
-          utils.handelError(this, err);
+    async send() {
+      try {
+        const result = await this.$axios.post(
+          `${this.$config.authUrl}/login`,
+          this.form
+        );
+
+        const {
+          data: {
+            outcome: {
+              data: { user, token }
+            }
+          }
+        } = result;
+
+        this.$store.commit("auth/setUser", user);
+        this.$store.commit("auth/setToken", token);
+        // this.$sendTokenToAxios.setToken(token)
+        // save token in cookie
+        this.$cookies.set("token", token, {
+          path: "/",
+          maxAge: 60 * 60 * 24 * 30, // 30 days in second
+          sameSite: "Lax"
         });
+
+        // redirect to "/"
+        this.$router.push("/");
+
+        this.$toast.toastSuccess("خوش آمدید");
+      } catch (error) {
+        console.error(error, "error login");
+        // todo remove toast plugin and config it in utils
+        utils.handelError(this, error);
+      }
     }
   }
 };
@@ -135,6 +141,7 @@ export default {
   margin-top: 5%;
   .container-box {
     width: 400px;
+    // height: 470px;
     border: 1px solid #e1e1e1;
     margin: auto;
     padding: 2rem;
@@ -166,6 +173,11 @@ export default {
         font-size: 0.9rem;
         color: #5b5b5b;
         font-weight: 500;
+
+        // .small {
+        //   font-size: 0.7rem;
+        //   color: #bfbbbb;
+        // }
       }
 
       .input {

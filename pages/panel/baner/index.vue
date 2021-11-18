@@ -15,7 +15,7 @@
             <td><img :src="`http://localhost/Asia/public/images/banners/${banner.id}/${banner.image}`"></td>
             <td>{{ banner.title}}</td>
             <td><p  class="cursor">ویرایش</p></td>
-            <td><p  class="cursor" @click="conf">حذف</p></td>
+            <td><p  class="cursor">حذف</p></td>
           </tr>
         </tbody>
       </table>
@@ -40,12 +40,6 @@ export default {
 
   async fetch() {
     this.banners = await this.$axios.$get(process.env.BASE_URL + "banner");
-  },
-
-  methods:{
-    conf(){
-      const answer = console.log('آیا مخواهید این بنر را پا کنید؟')
-    }
   },
 
   methods: {

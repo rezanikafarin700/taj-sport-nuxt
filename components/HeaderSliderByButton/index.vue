@@ -1,6 +1,12 @@
 <template>
   <div>
-    <div class="parent" :class="[{'border-banner' : borderBanner },{'parent__overlay' : borderBanner }]">
+    <div
+      class="parent"
+      :class="[
+        { 'border-banner': borderBanner },
+        { parent__overlay: borderBanner }
+      ]"
+    >
       <div class="parent__slider" v-for="(image, i) in images" :key="i">
         <transition name="fade">
           <div
@@ -121,7 +127,7 @@ export default {
       showTexts: true,
       showBtns: true,
       showScroll: false,
-      borderBanner : false,
+      borderBanner: false
     };
   },
 
@@ -164,6 +170,15 @@ export default {
         vm.showBtns = true;
         vm.showScroll = false;
         vm.borderBanner = false;
+      }
+
+      if (
+        document.documentElement.scrollTop > 2600 &&
+        document.documentElement.scrollTop < 3500
+      ) {
+        vm.$emit("changeScroll",true);
+      } else {
+        vm.$emit("changeScroll", false);
       }
     };
   }

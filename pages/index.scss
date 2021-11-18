@@ -80,37 +80,34 @@
 
 .background-article {
   width: 100%;
+  height: 1000px;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
   background-image: url("~assets/images/articles/12.jpg");
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding-bottom: 4rem;
+
 
   &__pages {
     display: flex;
     flex-direction: row-reverse;
     flex-wrap: wrap;
+    justify-content: space-between;
+    transition: all 1s;
+    perspective: 800px;
+    padding-top: 2rem;
   }
 
   &__page {
     width: calc(50% - 2rem);
     margin: 1rem;
     border-radius: 4px;
-    background-color: rgba(233, 233, 233, 0.4);
+    background-color: #fff;
     padding: 2rem;
     font-size: 14px;
     direction: rtl;
     text-align: justify;
     position: relative;
-    transition: all 0.5s;
-
-    &:hover {
-      background-color: #eeeeee;
-      transform: scale(1.01);
-    }
+    transition: all 1s;
 
     .page-number {
       font-size: 10px;
@@ -167,6 +164,14 @@
 .container-products-intro{
   background-color: $background-product;
 }
+
+.fade-enter,.fade-leave-to{
+  transform: scale(.5)   rotateX(45deg) translateY(-50px);
+  opacity : 0;
+
+}
+
+
 
 @media (max-width: 320px) {
   .wrapper {

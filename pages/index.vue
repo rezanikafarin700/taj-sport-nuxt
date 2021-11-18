@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-slider-by-button :images="banners" />
+    <header-slider-by-button :images="banners" @changeScroll="getOutput" />
     <div class="space-bottom"></div>
     <div class="start-intro">
       <div class="wrapper">
@@ -19,6 +19,7 @@
         </p>
       </div>
     </div>
+
     <div class="parent-items">
       <div class="space"></div>
       <div class="parent-items__parent-logo">
@@ -43,32 +44,33 @@
         <ProductIntro :products="products" />
       </div>
     </div>
-    <div class="space"></div>
 
     <div class="background-article">
       <div class="wrapper">
         <div class="title-items" style="color : #ffffff">
           <div class="space"></div>
-
           <div class="center">نکات مهم هنگام خرید فوتبال دستی</div>
         </div>
-        <div class="space"></div>
         <div class="background-article__pages">
-          <div class="background-article__page">
-            <p v-for="(note, index) in notesPage1" :key="index">
-              <span class="bold"> {{ note.title }}</span>
-              {{ note.description }}
-            </p>
-            <div class="page-number">صفحه یک</div>
-          </div>
-          <div class="background-article__page">
-            <p v-for="(note, index) in notesPage2" :key="index">
-              <span class="bold"> {{ note.title }}</span>
-              {{ note.description }}
-            </p>
+          <transition name="fade">
+            <div class="background-article__page" v-if="showPages">
+              <p v-for="(note, index) in notesPage1" :key="index">
+                <span class="bold"> {{ note.title }}</span>
+                {{ note.description }}
+              </p>
+              <div class="page-number">صفحه یک</div>
+            </div>
+          </transition>
+          <transition name="fade">
+            <div class="background-article__page" v-if="showPages">
+              <p v-for="(note, index) in notesPage2" :key="index">
+                <span class="bold"> {{ note.title }}</span>
+                {{ note.description }}
+              </p>
 
-            <div class="page-number">صفحه دو</div>
-          </div>
+              <div class="page-number">صفحه دو</div>
+            </div>
+          </transition>
         </div>
       </div>
     </div>
@@ -120,7 +122,7 @@
         <logo />
       </div>
       <div class="title-items center">انواع فوتبال دستی</div>
-      <div class="space"></div>
+      <!-- <div class="space"></div> -->
       <div class="wrapper">
         <div class="parent-items__items">
           <div
@@ -133,7 +135,7 @@
         </div>
       </div>
     </div>
-    <div class="space"></div>
+    <!-- <div class="space"></div> -->
   </div>
 </template>
 
@@ -161,9 +163,18 @@ export default {
       notesPage2,
       para,
       firstSeriesOfArticles: [],
-      secondSeriesOfArticles: []
+      secondSeriesOfArticles: [],
+      showPages: false,
+      showP: 0
     };
   },
+
+  methods: {
+    getOutput(e) {
+      this.showPages = e;
+    }
+  },
+
   mounted() {
     const request1 = axios.get(process.env.BASE_URL + "banner");
     const request2 = axios.get(process.env.BASE_URL + "article");
@@ -182,4 +193,20 @@ export default {
 
 <style lang="scss" scoped>
 @import "index";
+.show-p {
+  position: fixed;
+  top: 100;
+  right: 50;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  z-index: 5000;
+  background-color: green;
+  padding: 1rem;
+}
+
+// .show-pages {
+//   transform: translate(0);
+//   z-index: 1;
+// }
 </style>

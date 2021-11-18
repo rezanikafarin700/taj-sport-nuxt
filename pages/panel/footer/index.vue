@@ -1,5 +1,6 @@
 <template>
   <div>
+    <h1>Salam</h1>
     <div class="container rtl">
       <table class="table">
         <thead>
@@ -7,15 +8,15 @@
           <th><td>عکس</td></th>
           <th><td>عنوان</td></th>
           <th><td>ویرایش</td></th>
-          <th class="parent"><div class="cursor btn-select" @click="goToRoute('panel-article-AddArticle')">+</div><td>حذف</td></th>
+          <th class="parent"><div class="cursor btn-select" @click="goToRoute('panel-footer-AddFooter')">+</div><td>حذف</td></th>
         </thead>
         <tbody>
           <tr :class="{'table-active' : index %2 == 0 }"  v-for="(article,index) in articles" :key="index">
             <td>{{ article.id}}</td>
-            <td><img :src="`http://localhost/Asia/public/images/articles/${article.id}/${article.image}`"></td>
+            <td><img :src="`http://localhost/Asia/public/images/footers/${article.id}/${article.image}`"></td>
             <td>{{ article.title}}</td>
-            <td><p  class="cursor">ویرایش</p></td>
-            <td><p  class="cursor">حذف</p></td>
+            <td><p  class="cursor" @click="edit(article.id)">ویرایش</p></td>
+            <td><button  class="cursor" @click="del(article.id)">حذف</button></td>
           </tr>
         </tbody>
       </table>
@@ -26,7 +27,7 @@
 
 <script>
 export default {
-  name: "article-page",
+  name: "footer",
   layout: "PanelLayout",
 
   components: {},
@@ -39,15 +40,29 @@ export default {
   },
 
   async fetch() {
-    this.articles = await this.$axios.$get(process.env.BASE_URL + "article");
+    this.articles = await this.$axios.$get(process.env.BASE_URL + "footer");
   },
-
 
   methods: {
     goToRoute(url) {
       this.$router.push({ name: `${url}` });
+    },
+    del(articleId){
+      const isDelete = confirm('آیا رکورد حذف شود ؟');
+      if(isDelete){
+      this.$router.push({name : 'panel-footer-DeleteFooter',params : {id : articleId}});
+      this.$nuxt.refresh();
+      }
+    },
+      edit(articleId){
+      const isEdit = confirm('آیا رکورد ویرایش شود ؟');
+      if(isEdit){
+      this.$router.push({name : 'panel-footer-EditFooter',params : {id : articleId}});
+      this.$nuxt.refresh();
+      }
     }
-  }
+
+  },
 };
 </script>
 

@@ -1,5 +1,6 @@
 <template>
   <div class="get-multi-image">
+    <!-- {{ fileImages }} -->
     <div class="get-multi-image__multi-image">
       <div
         class="get-multi-image__image"
@@ -68,21 +69,28 @@
 export default {
   name: "index",
 
+
   data() {
     return {
       files: [],
       url: [],
-      titleMulti : 'افزودن عکس',
-      titleOnce : 'شما فقط میتوانید یک عکس انتخاب کنید'
+      titleMulti: "افزودن عکس",
+      titleOnce: "شما فقط میتوانید یک عکس انتخاب کنید"
     };
   },
 
   props: {
     value: Array,
+
     once: {
       type: Boolean,
       default: false
-    }
+    },
+
+    // fileImages: {
+    //   type: Array,
+    //   default: []
+    // }
   },
 
   methods: {
@@ -94,11 +102,13 @@ export default {
         vm.$emit("input", vm.files);
       } else {
         vm.files.push(e.target.files[0]);
+        console.log('the files = ',vm.files.__porto__);
         vm.$emit("input", vm.files);
       }
     },
 
     createObjectUrl(file) {
+    console.log("from GetMultiImage = ", this.file);
       return URL.createObjectURL(file);
     },
 
@@ -108,7 +118,14 @@ export default {
       vm.url.splice(index, 1);
       vm.$emit("input", vm.files);
     }
-  }
+  },
+  // mounted() {
+  //   console.log(this.fileImages);
+  //   if (this.fileImages) {
+  //     this.files.push(...this.fileImages);
+  //     console.log("fileImages content = ", this.files);
+  //   }
+  // }
 };
 </script>
 

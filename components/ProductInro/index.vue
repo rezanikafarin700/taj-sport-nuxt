@@ -26,9 +26,6 @@
         <div class="products__box--ratio"></div>
         <div class="products__box--left-btn"></div>
         <div class="products__box--right-btn"></div>
-        <!-- به جای استفاده از کلاس های زیر کلاس های دلخواه انتخاب کردیم -->
-        <!-- <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div> -->
 
         <div v-swiper="swiperOption" class=" ml-auto relative swiper-container">
           <div class="swiper-wrapper">
@@ -98,13 +95,13 @@ export default {
         slidesPerGroup: 1,
         speed: 1500,
         loop: true,
-        autoplay: {
-          delay: 3000,
-          disableOnInteraction: false
-        },
+        autoplay: false,
+        //  {
+        //   delay: 3000,
+        //   disableOnInteraction: false
+        // },
         pagination: {
           el: ".swiper-pagination"
-          // clickable: true
         },
         navigation: {
           nextEl: ".products__box--left-btn",

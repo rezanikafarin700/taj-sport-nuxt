@@ -31,7 +31,9 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/bootstrap.js',
-    { src: '@/plugins/vue-awesome-swiper', mode: 'client' }
+    { src: '@/plugins/vue-awesome-swiper', mode: 'client' },
+    { src: '@/plugins/vee-validate.js' ,ssr : true},
+
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -54,5 +56,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    transpile: ['vee-validate']
   }
 }

@@ -2,7 +2,6 @@
   background-color: #ffffff;;
   padding: 4rem 2rem 1rem 2rem;
   font-weight: bold;
-  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -54,6 +53,21 @@
   font-weight: 300;
   border-top: 1px solid #999999;
   padding-top: .5rem;
+}
+
+.items{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__item{
+    width: calc(25% - 1rem);
+      flex: 0 0 auto;
+      margin : .5rem;
+  }
+  &__ratio{
+    padding-top: 100%;
+    position: relative;
+  }
 }
 
 @media (max-width: 320px) {
