@@ -14,8 +14,8 @@
             <td>{{ article.id}}</td>
             <td><img :src="`http://localhost/Asia/public/images/articles/${article.id}/${article.image}`"></td>
             <td>{{ article.title}}</td>
-            <td><p  class="cursor">ویرایش</p></td>
-            <td><p  class="cursor">حذف</p></td>
+            <td><p  class="cursor" @click="edit(article.id)">ویرایش</p></td>
+            <td><button  class="cursor" @click="del(article.id)">حذف</button></td>
           </tr>
         </tbody>
       </table>
@@ -26,7 +26,7 @@
 
 <script>
 export default {
-  name: "article-page",
+  name: "article",
   layout: "PanelLayout",
 
   components: {},
@@ -42,12 +42,26 @@ export default {
     this.articles = await this.$axios.$get(process.env.BASE_URL + "article");
   },
 
-
   methods: {
     goToRoute(url) {
       this.$router.push({ name: `${url}` });
+    },
+    del(articleId){
+      const isDelete = confirm('آیا رکورد حذف شود ؟');
+      if(isDelete){
+      this.$router.push({name : 'panel-article-DeleteArticle',params : {id : articleId}});
+      this.$nuxt.refresh();
+      }
+    },
+      edit(articleId){
+      const isEdit = confirm('آیا رکورد ویرایش شود ؟');
+      if(isEdit){
+      this.$router.push({name : 'panel-article-EditArticle',params : {id : articleId}});
+      this.$nuxt.refresh();
+      }
     }
-  }
+
+  },
 };
 </script>
 

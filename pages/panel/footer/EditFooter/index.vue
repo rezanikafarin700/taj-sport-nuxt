@@ -8,7 +8,7 @@
             >در این قسمت فقط قادر به انتخاب یک عکس برای فوتر هستید</label
           >
           <img :src="addressFile" width="100" height="100" alt="فوتبال دستی" />
-          <GetMultiImage id="get-multi-image" v-model="file" />
+          <GetMultiImage :once="true" id="get-multi-image" v-model="file" />
           <small id="emailHelp" class="form-text text-muted"></small>
 
           <div class="space-bottom"></div>
@@ -97,8 +97,8 @@ const vm = this;
       fd.append("image", vm.file[0]);
       console.log(fd, "fd");
       this.$axios({
-        method: "put",
-        url: process.env.BASE_URL + "footer/" +  this.$route.params.id,
+        method: "post",
+        url: process.env.BASE_URL + "footer/update/" +  this.$route.params.id,
         data: fd,
         headers: {
           "Content-Type": "multipart/form-data"

@@ -1,6 +1,5 @@
 <template>
   <div class="get-multi-image">
-    <!-- {{ fileImages }} -->
     <div class="get-multi-image__multi-image">
       <div
         class="get-multi-image__image"
@@ -87,10 +86,6 @@ export default {
       default: false
     },
 
-    // fileImages: {
-    //   type: Array,
-    //   default: []
-    // }
   },
 
   methods: {
@@ -101,8 +96,8 @@ export default {
         window.console.log(vm.files);
         vm.$emit("input", vm.files);
       } else {
-        vm.files.push(e.target.files[0]);
-        console.log('the files = ',vm.files.__porto__);
+        vm.files.push(...e.target.files);
+        window.console.log(vm.files);
         vm.$emit("input", vm.files);
       }
     },
@@ -119,13 +114,6 @@ export default {
       vm.$emit("input", vm.files);
     }
   },
-  // mounted() {
-  //   console.log(this.fileImages);
-  //   if (this.fileImages) {
-  //     this.files.push(...this.fileImages);
-  //     console.log("fileImages content = ", this.files);
-  //   }
-  // }
 };
 </script>
 

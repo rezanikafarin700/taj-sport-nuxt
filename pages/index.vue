@@ -52,26 +52,22 @@
           <div class="center">نکات مهم هنگام خرید فوتبال دستی</div>
         </div>
         <div class="background-article__pages">
-          <transition name="fade">
-            <div class="background-article__page" v-if="showPages">
-              <p v-for="(note, index) in notesPage1" :key="index">
-                <span class="bold"> {{ note.title }}</span>
-                {{ note.description }}
-              </p>
-              <div class="page-number">صفحه یک</div>
-            </div>
-          </transition>
-          <transition name="fade">
-            <div class="background-article__page" v-if="showPages">
-              <p v-for="(note, index) in notesPage2" :key="index">
-                <span class="bold"> {{ note.title }}</span>
-                {{ note.description }}
-              </p>
-
-              <div class="page-number">صفحه دو</div>
-            </div>
-          </transition>
+          <div class="background-article__page">
+            <p v-for="(note, index) in notesPage1" :key="index">
+              <span class="bold"> {{ note.title }}</span>
+              {{ note.description }}
+            </p>
+            <div class="page-number">صفحه یک</div>
+          </div>
+          <div class="background-article__page">
+            <p v-for="(note, index) in notesPage2" :key="index">
+              <span class="bold"> {{ note.title }}</span>
+              {{ note.description }}
+            </p>
+            <div class="page-number">صفحه دو</div>
+          </div>
         </div>
+        <div class="space"></div>
       </div>
     </div>
 
@@ -122,7 +118,6 @@
         <logo />
       </div>
       <div class="title-items center">انواع فوتبال دستی</div>
-      <!-- <div class="space"></div> -->
       <div class="wrapper">
         <div class="parent-items__items">
           <div
@@ -135,7 +130,6 @@
         </div>
       </div>
     </div>
-    <!-- <div class="space"></div> -->
   </div>
 </template>
 
@@ -193,20 +187,4 @@ export default {
 
 <style lang="scss" scoped>
 @import "index";
-.show-p {
-  position: fixed;
-  top: 100;
-  right: 50;
-  color: #fff;
-  font-size: 20px;
-  font-weight: bold;
-  z-index: 5000;
-  background-color: green;
-  padding: 1rem;
-}
-
-// .show-pages {
-//   transform: translate(0);
-//   z-index: 1;
-// }
 </style>

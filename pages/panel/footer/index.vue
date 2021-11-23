@@ -1,6 +1,5 @@
 <template>
   <div>
-    <h1>Salam</h1>
     <div class="container rtl">
       <table class="table">
         <thead>
