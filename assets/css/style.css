@@ -47,3 +47,7 @@ body{
     justify-content: center;
     align-items: center;
 }
+.active {
+  color: orangered;
+  font-weight: bold;
+}

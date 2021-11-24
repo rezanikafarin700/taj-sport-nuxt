@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container rtl">
+      <div class="active">صفحه مقاله</div>
       <table class="table">
         <thead>
           <th><td>شماره</td></th>

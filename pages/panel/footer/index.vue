@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="container rtl">
+      <div class="active">صفحه فوتر</div>
       <table class="table">
         <thead>
           <th><td>شماره</td></th>
@@ -59,7 +60,7 @@ export default {
       this.$router.push({name : 'panel-footer-EditFooter',params : {id : articleId}});
       this.$nuxt.refresh();
       }
-    }
+    },
 
   },
 };

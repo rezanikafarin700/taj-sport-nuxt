@@ -1,7 +1,7 @@
 <template>
   <div class="rtl">
     <div class="container">
-      <h1>به پنل سایت خوش آمدید</h1>
+      <h1 class="active">به پنل سایت خوش آمدید</h1>
     </div>
   </div>
 </template>
