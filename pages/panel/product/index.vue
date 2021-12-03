@@ -1,23 +1,25 @@
 <template>
   <div>
     <div class="container rtl">
-      <div class="active">صفحه فوتر</div>
+      <div class="active">صفحه محصول</div>
       <table class="table">
         <thead>
           <th><td>شماره</td></th>
           <th><td>عکس</td></th>
           <th><td>عنوان</td></th>
+          <th><td>کد</td></th>
           <th><td>ویرایش</td></th>
-          <th class="parent"><div class="cursor btn-select" @click="goToRoute('panel-footer-AddFooter')">+</div>
+          <th class="parent"><div class="cursor btn-select" @click="goToRoute('panel-product-add-product')">+</div>
           <td>حذف</td></th>
         </thead>
         <tbody>
-          <tr :class="{'table-active' : index %2 == 0 }"  v-for="(article,index) in articles" :key="index">
-            <td>{{ article.id}}</td>
-            <td><img :src="`http://localhost/Asia/public/images/footers/${article.id}/${article.image}`"></td>
-            <td>{{ article.title}}</td>
-            <td><p  class="cursor" @click="edit(article.id)">ویرایش</p></td>
-            <td><button  class="cursor" @click="del(article.id)">حذف</button></td>
+          <tr :class="{'table-active' : index %2 == 0 }"  v-for="(product,index) in products" :key="index">
+            <td>{{ product.id}}</td>
+            <td><img :src="`http://localhost/Asia/public/images/products/${product.id}/${product.image}`"></td>
+            <td>{{ product.name}}</td>
+            <td>{{ product.code}}</td>
+            <td><p  class="cursor" @click="edit(product.id)">ویرایش</p></td>
+            <td><button  class="cursor" @click="del(product.id)">حذف</button></td>
           </tr>
         </tbody>
       </table>
@@ -28,37 +30,37 @@
 
 <script>
 export default {
-  name: "footer",
+  name: "product",
   layout: "PanelLayout",
 
   components: {},
 
   data() {
     return {
-      articles: [],
+      products: [],
       url: process.env.BASE_URL,
     };
   },
 
   async fetch() {
-    this.articles = await this.$axios.$get(process.env.BASE_URL + "footer");
+    this.products = await this.$axios.$get(process.env.BASE_URL + "products");
   },
 
   methods: {
     goToRoute(url) {
       this.$router.push({ name: `${url}` });
     },
-    del(articleId){
+    del(productId){
       const isDelete = confirm('آیا رکورد حذف شود ؟');
       if(isDelete){
-      this.$router.push({name : 'panel-footer-DeleteFooter',params : {id : articleId}});
+      this.$router.push({name : 'panel-product-delete-product',params : {id : productId}});
       this.$nuxt.refresh();
       }
     },
-      edit(articleId){
+      edit(productId){
       const isEdit = confirm('آیا رکورد ویرایش شود ؟');
       if(isEdit){
-      this.$router.push({name : 'panel-footer-EditFooter',params : {id : articleId}});
+      this.$router.push({name : 'panel-product-edit-product',params : {id : productId}});
       this.$nuxt.refresh();
       }
     },

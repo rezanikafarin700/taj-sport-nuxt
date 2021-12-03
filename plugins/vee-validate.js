@@ -1,14 +1,4 @@
 import Vue from "vue";
-
-/* add this code after search */
-// import VeeValidate from 'vee-validate'
-// Vue.use(VeeValidate, {
-//   inject: true
-// })
-/* add this code after search */
-
-
-
 import fa from "vee-validate/dist/locale/fa.json";
 import {
   ValidationObserver,
@@ -29,7 +19,6 @@ import {
   regex
 } from "vee-validate/dist/rules";
 
-
 Vue.component("ValidationObserver", ValidationObserver);
 Vue.component("ValidationProvider", ValidationProvider);
 
@@ -43,7 +32,6 @@ extend("required", required);
 extend("min_value", min_value);
 extend("max_value", max_value);
 extend("regex", regex);
-
 
 extend("complex_password", value => {
   let tester = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/g;
@@ -71,5 +59,3 @@ configure({
     invalid: "is-invalid"
   }
 });
-
-

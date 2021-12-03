@@ -1,12 +1,12 @@
 <template>
   <div class="wrapper-small rtl">
     <div class="box-panel">
-      <form>
+
+        <form>
         <div class="form-group">
-          <label for="get-multi-image">در این قسمت فقط قادر به انتخاب یک عکس برای فوتر هستید</label>
+          <label for="labe-input" class="label-input">در این قسمت فقط قادر به انتخاب یک عکس برای فوتر هستید</label>
           <GetMultiImage  :once="true" id="get-multi-image" v-model="file" />
           <small id="emailHelp" class="form-text text-muted"></small>
-
           <div class="space-bottom"></div>
 
           <label for="demoTitle">عنوان مقاله را وارد کنید</label>
@@ -39,7 +39,7 @@
 
         <div class="btns">
           <button
-            type="submit"
+            type="button"
             class="btn btn-primary btn-block"
             @click.prevent="send"
           >
@@ -99,7 +99,7 @@ export default {
       })
         .then(res => {
           console.log(res, "res");
-          vm.$router.push({ name: "index" });
+          vm.$router.push({ name: "panel-footer" });
         })
         .catch(err => {
           console.log(err.response.data, "err");

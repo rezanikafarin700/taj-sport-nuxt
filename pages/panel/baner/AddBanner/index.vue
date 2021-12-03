@@ -99,7 +99,7 @@ export default {
       })
         .then(res => {
           console.log(res, "res");
-          vm.$router.push({ name: "index" });
+          vm.$router.push({ name: "panel-baner" });
         })
         .catch(err => {
           console.log(err.response.data, "err");

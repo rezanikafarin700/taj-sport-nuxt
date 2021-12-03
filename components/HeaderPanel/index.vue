@@ -24,7 +24,7 @@ export default {
     return {
       links: [
         { name: "index", title: "صفحه اصلی", id: 0 },
-        { name: "panel", title: "صفحه پنل", id: 1 },
+        { name: "panel-product", title: "صفحه محصول", id: 1 },
         { name: "panel-baner", title: "صفحه بنر", id: 2 },
         { name: "panel-article", title: "صفحه مقاله", id: 3 },
         { name: "panel-footer", title: "صفحه فوتر", id: 4 }
