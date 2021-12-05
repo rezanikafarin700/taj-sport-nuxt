@@ -3,12 +3,15 @@
     <div class="box-panel">
       <form>
         <div class="form-group">
-          <!-- article = {{ article }} -->
           <label for="get-multi-image"
             >در این قسمت فقط قادر به انتخاب یک عکس برای فوتر هستید</label
           >
-          <img :src="addressFile" width="100" height="100" alt="فوتبال دستی" />
-          <GetMultiImage id="get-multi-image" v-model="file" />
+          <UploadImage
+            :once="true"
+            :url="url"
+            :oldImages="oldImage"
+            v-model="file"
+          />
           <small id="emailHelp" class="form-text text-muted"></small>
 
           <div class="space-bottom"></div>
@@ -63,23 +66,24 @@
 </template>
 
 <script>
-import GetMultiImage from "@/components/GetMultiImage";
+import UploadImage from "@/components/UploadImage";
 export default {
   name: "EditBanner",
   layout: "PanelLayout",
 
   components: {
-    GetMultiImage
+    UploadImage
   },
 
   data() {
     return {
+      url: "",
+      oldImage: [],
       article: {
         description: "",
         title: ""
       },
-      file: [],
-      addressFile: ""
+      file: []
     };
   },
 
@@ -88,9 +92,9 @@ export default {
       this.$router.push({ name: `${url}` });
     },
     send() {
-      console.log('in Send article.title = ',this.article.title);
-      console.log('in Send article.description = ',this.article.description);
-const vm = this;
+      console.log("in Send article.title = ", this.article.title);
+      console.log("in Send article.description = ", this.article.description);
+      const vm = this;
       const fd = new FormData();
       fd.append("description", vm.article.description);
       fd.append("title", vm.article.title);
@@ -98,7 +102,7 @@ const vm = this;
       console.log(fd, "fd");
       this.$axios({
         method: "post",
-        url: process.env.BASE_URL + "banner/update/" +  this.$route.params.id,
+        url: process.env.BASE_URL + "banner/update/" + this.$route.params.id,
         data: fd,
         headers: {
           "Content-Type": "multipart/form-data"
@@ -120,13 +124,9 @@ const vm = this;
       .get(process.env.BASE_URL + "banner/" + `${this.$route.params.id}`)
       .then(res => {
         this.article = res.data;
-
-        this.addressFile =
-          process.env.IMAGE_URL +
-          "banners/" +
-          this.article.id +
-          "/" +
-          this.article.image;
+        this.url = process.env.IMAGE_URL + "banners/" + this.article.id + "/";
+        this.oldImage = this.article.image;
+        this.oldImage = this.oldImage.split();
       });
   }
 };
@@ -149,6 +149,5 @@ label {
 img {
   object-fit: cover;
   object-position: center;
-
 }
 </style>

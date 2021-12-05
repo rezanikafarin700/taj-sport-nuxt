@@ -1,9 +1,8 @@
 <template>
   <div>
     <div class="wrapper-small rtl">
-      {{ deletedOfOldMainImage }}
+      {{ deletedOfOldImages }}
       <hr />
-      {{ files }}
       <div class="box-panel">
         <div class="title">افزودن محصول جدید</div>
         <form method="post">
@@ -12,7 +11,6 @@
           >
           <br />
           <br />
-          <!-- <img :src="addressFile" width="100" height="100" alt="فوتبال دستی" /> -->
           <hr />
           <label class="add-image">ویرایش عکس اصلی</label>
           <UploadImage
@@ -114,7 +112,6 @@
 
 <script>
 import axios from "axios";
-import GetMultiImage from "@/components/GetMultiImage";
 import UploadImage from "@/components/UploadImage";
 
 export default {
@@ -123,7 +120,6 @@ export default {
   layout: "PanelLayout",
 
   components: {
-    GetMultiImage,
     UploadImage
   },
 
@@ -136,7 +132,7 @@ export default {
       files: [],
       file: [],
       images: [],
-      image: "",
+      image: [],
       url: "",
       deleted: []
     };
@@ -169,10 +165,12 @@ export default {
       fd.append("code", vm.product.code);
       fd.append("material", vm.product.material);
       fd.append("description", vm.product.description);
-      fd.append("deletedOfOldImages", vm.deletedOfOldImages);
       fd.append("mainImage", vm.file[0]);
       for (let i = 0; i < vm.files.length; i++) {
-        fd.append("images[" + i + "]", vm.product.files[i]);
+        fd.append("images[" + i + "]", vm.files[i]);
+      }
+      for (let i = 0; i < vm.deletedOfOldImages.length; i++) {
+        fd.append("deletedOfOldImages[" + i + "]", vm.deletedOfOldImages[i]);
       }
       console.log(fd);
       axios({
@@ -211,9 +209,8 @@ export default {
         this.images = responses[1].data;
         console.log("this.images = ", this.images);
         this.url =
-          process.env.IMAGE_URL + "products/" + this.images[0].productId + "/";
+          process.env.IMAGE_URL + "products/" + this.product.id + "/";
         this.images = this.getArrayFromArray(this.images, "name");
-
         this.image = this.product.image;
         this.image = this.image.split();
       })
