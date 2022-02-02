@@ -2,11 +2,11 @@ body{
     font-family: Vazir;
 }
 .wrapper{
-    width: 1200px;
+    width: 1150px;
     margin : 0 auto;
 }
 .wrapper-small{
-    width: 600px;
+    width: 700px;
     margin : 0 auto;
 }
 .space-bottom{
@@ -39,7 +39,7 @@ body{
 }
 
 .space{
-    padding: 50px 0;
+    padding: 20px 0;
 }
 .center{
     display: flex;
@@ -51,3 +51,13 @@ body{
   color: orangered;
   font-weight: bold;
 }
+.title-items {
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 3px;
+}
+.bold{
+  font-weight: bold;
+}
+
+

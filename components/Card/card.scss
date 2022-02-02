@@ -2,51 +2,82 @@ $color-title: #0d0d0d;
 $color-text: #404040;
 $color-btn-text: #3363ff;
 $color-btn-background: #e6ecff;
-$border-card : 4px;
+$border-card: 4px;
 
 .card {
+  width: 100%;
+  height: 100%;
   border-radius: $border-card;
   cursor: pointer;
-  box-shadow: 0 0 5px 0 #999999;
   position: relative;
+  background-color: #f8f8f8;
+  transition: all .2s;
 
-  &__overlay{
+  &__overlay {
+    background-color: rgba(224, 241, 238, 0.87);
+    position: absolute;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0,0,0,.2);
-    transition: all .5s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    cursor: pointer;
     opacity: 0;
-    position: absolute;
-    left: 0;
-    top : 0;
-    border-radius: $border-card;
+    transition: all .2s;
+
+    .text {
+      color: #1aa170;
+      font-size: 2rem;
+    }
+
+    .img {
+      background-image: url("@/assets/icons/arrow-green.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 80px;
+      height: 18px;
+      transform: rotate(180deg);
+    }
+
+    &::after {
+      content: "";
+    }
+    img {
+      width: 20%;
+      height: 10%;
+    }
+
 
   }
-
-  &:hover &{
+  &:hover & {
     z-index: -1;
 
-    &__overlay{
+    &__overlay {
       opacity: 1;
       z-index: 1;
     }
   }
-
-
-
   &__image {
+    width: 100%;
+    height: 50%;
+    padding: 1rem;
+
 
     &--ratio {
       padding-top: 80%;
       position: relative;
       border-radius: $border-card;
 
-      img{
+      img {
         width: 100%;
         height: 100%;
         object-fit: cover;
         position: absolute;
-        top : 0;
+        top: 0;
         left: 0;
         border-top-right-radius: $border-card;
         border-top-left-radius: $border-card;
@@ -55,12 +86,13 @@ $border-card : 4px;
   }
 
   &__intro {
+    width: 100%;
+    height: 50%;
     padding: 1rem;
     direction: rtl;
     text-align: right;
-    transition: all .2s;
+    transition: all 0.2s;
     background-color: #fff;
-
   }
   &__title {
     font-size: 1.2rem;
@@ -71,21 +103,9 @@ $border-card : 4px;
 
   &__text {
     font-size: 14px;
-    letter-spacing: .1rem;
+    letter-spacing: 0.1rem;
     line-height: 1.1;
     color: darken($color-text, 1%);
     margin-bottom: 2.5rem;
   }
-
-  &__btn-card {
-    width: 100%;
-    padding: .5rem 1.5rem;
-    background-color: $color-btn-background;
-    color: $color-btn-text;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-  }
-
 }

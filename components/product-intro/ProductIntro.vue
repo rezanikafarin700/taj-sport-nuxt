@@ -2,32 +2,18 @@
   <div>
     <div class="products">
       <div class="products__description rtl">
-        <div class="title-product">تولیدات تاج اسپرت</div>
-        <br />
-        <div class="products__text">انتخاب کنید</div>
-        <div class="products__line">___</div>
-        <div class="products__para">
-          لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-          استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-          ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-          کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-          در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-          طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-          الخصوص طراحان خلاقی، و فرهنگ پیشرو در زبان فارسی ایجاد کرد، در این
-          صورت می توان امید داشت که تمام و دشواری موجود در ارائه راهکارها، و
-          شرایط سخت تایپ به پایان رسد و زمان مورد نیاز شامل حروفچینی دستاوردهای
-          اصلی، و جوابگوی سوالات پیوسته اهل دنیای موجود طراحی اساسا مورد استفاده
-          قرار گیرد.
-        </div>
-        <button class="products__btn">خرید آسان</button>
+        <FactoryIntro url="images/main-page/intro-factory.jpg" />
       </div>
 
       <div class="products__box">
+        <div class="products__head dastnevis rtl title-items">
+          <div>اینجا کارگاه ماست ...</div>
+        </div>
         <div class="products__box--ratio"></div>
         <div class="products__box--left-btn"></div>
         <div class="products__box--right-btn"></div>
 
-        <div v-swiper="swiperOption" class=" ml-auto relative swiper-container">
+        <div v-swiper="swiperOption" class="ml-auto relative swiper-container">
           <div class="swiper-wrapper">
             <div
               class="swiper-slide"
@@ -36,38 +22,39 @@
             >
               <div class="ratio"></div>
               <div class="product-information">
-                <div class="text dastnevis rtl">
-                  <p class="title-product">
-                    {{ product.name }}
-                  </p>
-                  <p>مدل : {{ product.model }}</p>
-                  <p>اندازه : {{ product.size }}</p>
-                  <p></p>
-                  <p>جنس : {{ product.material }}</p>
-                  <p></p>
-                  <p>قیمت : {{ product.price }} تومان</p>
-                  <p></p>
-                  <p class="show-price">تخفیف : {{ product.discount }} %</p>
+                <div class="item">
+                  <div class="text  rtl dastnevis">
+                    <!-- <p>{{ product.name }}</p> -->
+                    <p>مدل : {{ product.model }}</p>
+                    <!-- <p>اندازه : {{ product.size }}</p>
+                    <p></p>
+                    <p>جنس : {{ product.material }}</p> -->
+                    <!-- <p></p> -->
+                    <p>قیمت : {{ product.price }} تومان</p>
+                    <!-- <p></p>
+                    <p>تخفیف : {{ product.discount }} %</p> -->
+                  </div>
+                  <img
+                    :src="`${url}${product.id}/${product.image}`"
+                    alt="انواع فوتبال دستی تاج اسپرت"
+                  />
                 </div>
-                <img
-                  :src="`${url}${product.id}/${product.image}`"
-                  alt="انواع فوتبال دستی تاج اسپرت"
-                />
               </div>
             </div>
             <div class="swiper-pagination"></div>
           </div>
         </div>
+        <!-- end of swiper -->
       </div>
     </div>
-    <div class="space"></div>
   </div>
 </template>
 
 <script>
-import { directive } from "vue-awesome-swiper";
-import Swiper, { Autoplay, Navigation, Pagination } from "swiper";
 Swiper.use([Autoplay, Navigation, Pagination]);
+import Swiper, { Autoplay, Navigation, Pagination } from "swiper";
+import { directive } from "vue-awesome-swiper";
+import FactoryIntro from "@/components/factory-intro/FactoryIntro";
 export default {
   name: "ProductIntro",
   directives: {
@@ -75,9 +62,10 @@ export default {
   },
 
   components: {
+    Swiper,
     directive,
     Navigation,
-    Swiper
+    FactoryIntro
   },
 
   props: {
@@ -97,10 +85,6 @@ export default {
         speed: 1500,
         loop: true,
         autoplay: false,
-        //  {
-        //   delay: 3000,
-        //   disableOnInteraction: false
-        // },
         pagination: {
           el: ".swiper-pagination"
         },
@@ -128,6 +112,11 @@ export default {
         }
       }
     };
+  },
+  methods: {
+    func() {
+      this.$refs.test.style.backgroundColor = "red";
+    }
   }
 };
 </script>
@@ -139,26 +128,37 @@ export default {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  align-items: center;
   flex-direction: row-reverse;
   background-color: $background-product;
 
-  &__btn {
-    border: 1px solid green;
-    color: green;
-    padding: 0.5rem 1rem;
-    margin: 1rem 0;
+  &__head {
+    text-align: center;
+    padding: 3rem 0;
+    margin-bottom: 2rem;
   }
 
   &__description {
     flex: 0 0 auto;
-    width: 30%;
+    width: 40%;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
   }
   &__box {
-    background-color: $background-box;
+    background-color: #f8f8f8;
     width: 60%;
     flex: 0 0 auto;
     position: relative;
+    user-select: none;
+    min-height: 400px;
+
+    @media (max-width : 576px) {
+      padiing-bottom : 1rem;
+    }
 
     &--ratio {
       padding-top: 50%;
@@ -167,7 +167,7 @@ export default {
 
     &--left-btn {
       position: absolute;
-      left: -25px;
+      left: 20px;
       top: 50%;
       width: 8px;
       height: 16px;
@@ -177,10 +177,11 @@ export default {
       background-position: center;
       background-size: cover;
       background-image: url("@/assets/icons/arrow-left.png");
+      z-index: 100;
     }
     &--right-btn {
       position: absolute;
-      right: -25px;
+      right: 20px;
       top: 50%;
       width: 8px;
       height: 16px;
@@ -190,11 +191,11 @@ export default {
       background-position: center;
       background-size: cover;
       background-image: url("@/assets/icons/arrow-right.png");
+      z-index: 100;
     }
 
     .swiper-container {
       display: flex;
-      flex-direction: row;
       margin: auto;
       overflow: hidden;
       position: absolute;
@@ -203,19 +204,19 @@ export default {
       width: 100%;
       height: 100%;
       align-items: center;
+      justify-content: space-between;
     }
 
     .swiper-wrapper {
       display: flex;
-      flex-direction: row;
-      justify-content: center;
+      justify-content: space-between;
       align-items: center;
     }
     .swiper-slide {
-      width: 80%;
+      width: 100%;
       display: flex;
-      justify-content: center;
       align-items: center;
+      justify-content: center;
       color: #fff;
       position: relative;
 
@@ -226,25 +227,28 @@ export default {
       .product-information {
         position: absolute;
         color: #000;
-        width: 100%;
-        height: 50%;
+        width: 80%;
+        height: 400px;
         padding: 1rem;
         display: flex;
+        flex-direction: column;
         flex-direction: row-reverse;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
         border-radius: $global-border-radius;
-
         .text {
-          width: 30%;
-          justify-content: space-around;
-          padding-bottom: 2rem;
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
           direction: rtl;
-          text-align: center;
+          text-align: right;
+          color: #555;
+          font-size: 1rem;
         }
 
         img {
-          width: 50%;
+          width: 100%;
+          height: 100%;
           flex: 0 0 auto;
           height: 100%;
           object-fit: cover;
@@ -257,6 +261,13 @@ export default {
 }
 .title-product {
   font-size: 20px;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid #000;
+}
+.btn-taj {
+  cursor: pointer;
+  font-weight: bold;
+  z-index: 101;
 }
 .products__text {
   font-size: 18px;
@@ -264,13 +275,6 @@ export default {
 .products__para {
   font-size: 14px;
   text-align: justify;
-}
-.show-price {
-  color: rgb(2, 114, 48);
-  border-radius: 20px;
-  border: 2px solid green;
-  padding: 0.5rem 1rem;
-  display: inline-block;
 }
 
 @media (max-width: 768px) {

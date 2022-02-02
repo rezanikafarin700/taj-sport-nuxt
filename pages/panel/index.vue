@@ -9,7 +9,8 @@
 <script>
 export default {
   name: "panel",
-  layout: "PanelLayout"
+  layout: "PanelLayout",
+  // middleware: "auth"
 };
 </script>
 

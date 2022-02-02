@@ -2,27 +2,21 @@
   <div class="articles rtl">
     <header>
       <hr class="line" />
-      <h1>مقاله های خواندنی</h1>
+      <div class="title-items dastnevis">مقاله های خواندنی</div>
     </header>
-    <div class="wrapper-small">
-      <div class="articles__group">
-        <article :key="index" v-for="(article, index) in articles">
-          <div class="image">
-            <img
-              :src="`${url}${article.id}/${article.image}`"
-              alt="عکس مقاله فوتبال دستی"
-            />
-          </div>
-          <div class="content">
-            <div class="title">{{ article.title }}</div>
-            <div class="text">{{ article.description }}</div>
-          </div>
-        </article>
-      </div>
-      <footer>
-        <div class="more">نمایش وبلاگ</div>
-        <div class="line"></div>
-      </footer>
+    <div class="articles__group">
+      <article :key="index" v-for="(article, index) in articles">
+        <div class="image" @click="goToArticle(index)">
+          <img
+            :src="`${url}${article.id}/${article.image}`"
+            alt="عکس مقاله فوتبال دستی"
+          />
+        </div>
+        <div class="content">
+          <div class="title">{{ article.title }}</div>
+          <div class="text">{{ article.description }}</div>
+        </div>
+      </article>
     </div>
   </div>
 </template>
@@ -42,6 +36,22 @@ export default {
     return {
       articles: []
     };
+  },
+
+  methods: {
+    goToArticle(index) {
+      switch (index) {
+        case 0: {
+        }
+        case 1: {
+        }
+        case 2: {
+        }
+        case 3: {
+          this.$router.push({ name: "Articles-a" });
+        }
+      }
+    }
   },
 
   mounted() {
@@ -66,15 +76,32 @@ export default {
     width: 600px;
     margin: 0 auto;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    padding: 2rem;
+
+    @media (max-width : 576px) {
+      width : 100%;
+    }
 
     article {
       width: calc(25% - 2rem);
       margin: 1rem;
       display: flex;
       flex-direction: column;
+      align-items: center;
       overflow: hidden;
       cursor: pointer;
+
+      @media (min-width: 1px) and (max-width: 576px) {
+        width: 100%;
+      }
+      @media (min-width: 577px) and (max-width: 768px) {
+        width: calc(50% - 2rem);
+      }
+      @media (min-width: 769px) and (max-width: 992px) {
+        width: calc(33.3333% - 2rem);
+      }
 
       .image {
         img {
@@ -102,7 +129,6 @@ export default {
 }
 header {
   text-align: center;
-  width: 400px;
   margin: 0 auto;
   h1 {
     font-family: "p22-underground", sans-serif;
@@ -128,4 +154,5 @@ footer {
     margin: 0 auto;
   }
 }
+
 </style>

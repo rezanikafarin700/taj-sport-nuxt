@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="card">
-      <div class="card__overlay"></div>
+      <div class="card__overlay">
+        <div class="dastnevis text">خرید</div>
+        <div class="img"></div>
+      </div>
       <div class="card__image">
         <div class="card__image--ratio">
           <img
@@ -21,7 +24,6 @@
           <div>مدل : {{ product.model }}</div>
           <div>کد محصول : {{ product.code }}</div>
         </div>
-        <div class="card__btn-card">بیشتر</div>
       </div>
     </div>
   </div>
@@ -29,7 +31,7 @@
 
 <script>
 export default {
-  name: "index",
+  name: "Card",
 
   props: {
     product: Object,

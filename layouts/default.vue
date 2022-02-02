@@ -1,23 +1,21 @@
 <template>
-    <div>
-        <Header />
-          <Nuxt />
-        <Footer />
-    </div>
+  <div>
+    <Header />
+    <Nuxt />
+    <Footer />
+  </div>
 </template>
 
 <script>
-import Header from '@/components/Header/index';
-import Footer from '@/components/Footer/index';
-    export default {
-        name : "default",
-        components : {
-            Header,
-            Footer,
-        }
-    }
+import Header from "@/components/header/Header";
+import Footer from "@/components/footer/Footer";
+export default {
+  name: "default",
+  components: {
+    Header,
+    Footer
+  }
+};
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

@@ -1,25 +1,31 @@
 <template>
   <div>
-    <div class="parent">
+    <section class="parent" @click="$emit('onClick')">
       <div class="parent__image">
         <div class="parent__image--ratio">
-          <img :src="`${url}${product.id}/${product.image}`" :alt="alt" />
+          <img v-if="dynamic" :src="`${url}${product.id}/${product.image}`" :alt="alt" />
+          <img v-else :src="url" :alt="alt" />
+          <div class="overlay dastnevis">
+            <div class="text">{{ textOverlay }}</div>
+            <div class="img"></div>
+          </div>
         </div>
       </div>
       <div class="parent__text">
         <div class="parent__title">{{ product.title }}</div>
-        <div class="parent__intro">: {{ product.description }}</div>
+        <div class="parent__intro">{{ product.description }}</div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 
 <script>
 export default {
-  name: "index",
+  name: "CartIntro",
 
   props: {
     product: Object,
+    textOverlay: String,
 
     alt: {
       type: String,
@@ -29,6 +35,10 @@ export default {
     url: {
       type: String,
       default: process.env.IMAGE_URL + "articles/"
+    },
+    dynamic: {
+      type : Boolean,
+      default : true
     }
   }
 };

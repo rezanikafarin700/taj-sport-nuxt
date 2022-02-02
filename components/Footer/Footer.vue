@@ -1,18 +1,17 @@
 <template>
   <div>
-    <Articles />
     <div class="footer">
       <div class="end-intro">
         <div class="end-intro__title dastnevis center">
-          تقدیم به دوستان عزیزم
+          تقدیم به شما دوست عزیز
         </div>
         <div class="end-intro__text dastnevis">
-          تقدیم به دوستان عزیزم که با آنها خاطرات خوبی دارم لورم ایپسوم متن
-          ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان
-          گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که
-          لازم است، و برای شرایط فعلی تکنولوژی
+              ما در این مجوعه سعی داریم تا با تولید محصولاتی با کیفیت ساعاتی پر نشاط
+               سر گرم کننده همراه با خاطراتی به یاد ماندنی را برای شما مشتریان عزیز فراهم کنیم
+               و با تولید محصولات با کیفیت و متنوع در پی کسب رضایت شما دوستان گرامی هستیم
+              <div class=""></div>
           <p class="end-intro__foot dastnevis">
-            ارادتمند شما رضا نیک آفرین
+            گروه تولیدی تاج اسپرت
           </p>
         </div>
       </div>
@@ -46,7 +45,7 @@
           ></div>
         </div>
       </div>
-      <p class="small-font center">
+      <p class="small-font center rtl">
         هر گونه استفاده از مطالب این سایت هیچگونه پیگرد قانونی ندارد پس تا
         میتوانید استفاده کنید
       </p>
@@ -55,17 +54,15 @@
 </template>
 
 <script>
-import Articles from "@/components/Articles";
 export default {
   name: "index",
-  components: { Articles },
   props: {
     articles: Array,
     url: {
       type: String,
       default: process.env.IMAGE_URL + ""
     }
-  }
+  },
 };
 </script>
 

@@ -8,7 +8,7 @@ export default {
         error.response.data.error.details[0] &&
         error.response.data.error.details[0].message
       ) {
-        thiz.$toast.toastError(error.response.data.error.details[0].message);
+        this.$toast.toastError(error.response.data.error.details[0].message);
         return
       } else if (
         error.response &&
@@ -26,4 +26,3 @@ export default {
       }
     }
   };
-  
