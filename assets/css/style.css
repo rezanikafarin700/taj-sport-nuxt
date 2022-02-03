@@ -39,7 +39,7 @@ body{
 }
 
 .space{
-    padding: 20px 0;
+    padding: 1.5rem 0;
 }
 .center{
     display: flex;
@@ -55,9 +55,33 @@ body{
   font-size: 20px;
   font-weight: 700;
   letter-spacing: 3px;
+  text-align: center;
+}
+
+.title-article{
+  font-size: 1rem;
+  font-weight: bold;
 }
 .bold{
   font-weight: bold;
+}
+
+.slide-enter{
+  opacity: 0;
+  transform: translateY(-100px);
+}
+/* .slide-enter-to{} */
+
+.slide-leave-active,
+.slide-enter-active{
+  transition: all .5s ease;
+}
+
+/* .slide-leave{} */
+
+.slide-leave-to{
+  opacity: 0;
+  transform: translateY(100px);
 }
 
 

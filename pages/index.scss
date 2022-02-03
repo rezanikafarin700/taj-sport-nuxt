@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: row-reverse;
   flex-wrap: wrap;
-  @media (max-width: 768px) {
+  @media (max-width: 922px) {
     padding: 1rem;
   }
 
@@ -29,7 +29,7 @@
         left: 0;
       }
     }
-    @media (max-width: 768px) {
+    @media (max-width: 922px) {
       width: 100%;
       margin-bottom: 2rem;
     }
@@ -62,6 +62,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    padding: 1.5rem 0;
   }
 
   &__items {
@@ -82,7 +83,6 @@
     @media (max-width: 768px) {
       width: calc(100% - 2rem);
       margin-bottom: 2rem;
-
     }
   }
 }
@@ -96,7 +96,9 @@
   flex-direction: row-reverse;
   flex-wrap: wrap;
   margin: -1rem;
-
+  @media (max-width: 1200px) {
+    margin: 0;
+  }
 
   &__card {
     width: calc(25% - 2rem);
@@ -158,54 +160,11 @@
   line-height: 1.4;
   font-size: 14px;
   font-weight: 400;
-  padding: .25rem;
+  padding: 0.25rem;
 }
 
-
-
-@media (max-width: 350px) {
-  .wrapper {
-    width: 250px;
-  }
-}
-
-@media (max-width: 425px) and (min-width: 351px) {
-  .wrapper {
-    width: 300px;
-  }
-}
-
-@media (max-width: 600px) and (min-width: 426px) {
-  .wrapper {
-    width: 370px;
-  }
-}
-
-@media (max-width: 768px) and (min-width: 600px) {
-  .wrapper {
-    width: 550px;
-  }
-}
-
-@media (max-width: 922px) and (min-width: 769px) {
-  .wrapper {
-    width: 700px;
-  }
-}
-
-@media (max-width: 1024px) and (min-width: 923px) {
-  .wrapper {
-    width: 850px;
-  }
-}
-
-@media (max-width: 1200px) and (min-width: 1025px) {
-  .wrapper {
-    width: 950px;
-  }
-}
-@media (min-width : 1200px){
-  .wrapper {
-    width: 1150px;
+.wrapper {
+  @media (max-width: 1200px) {
+    width: 96%;
   }
 }

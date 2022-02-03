@@ -1,5 +1,7 @@
 <template>
-  <Nuxt />
+  <transition name="slide" mode="out-in">
+    <Nuxt />
+  </transition>
 </template>
 
 <script>

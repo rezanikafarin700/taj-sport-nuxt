@@ -15,9 +15,14 @@
       <div class="parent__zigzag">
         <img src="@/assets/icons/zigzag-black.png" :alt="title" />
       </div>
-      <p v-for="(t, index) in text" :key="index">{{ t.para }}</p>
+      <p
+        :class="{ 'title-article': t.para.indexOf('.') == -1 }"
+        v-for="(t, index) in text"
+        :key="index"
+      >
+        {{ t.para }}
+      </p>
     </div>
-
   </div>
 </template>
 
@@ -52,6 +57,9 @@ export default {
 .parent {
   background: #f5f5f5;
   padding: 100px 0 25px 0;
+  @media (max-width : 768px){
+    padding: 50px 0 25px 0;
+  }
 
   &__head {
     width: 100%;
@@ -64,6 +72,7 @@ export default {
 
   &__image {
     width: 100%;
+    height: 100%;
 
     img {
       width: 100%;
@@ -85,6 +94,12 @@ export default {
     line-height: 1.5;
     margin-bottom: 25px;
     min-width: 300px;
+    @media (max-width: 768px) {
+      padding: 25px 2rem;
+    }
+    @media (max-width : 319px) {
+      padding: 25px 1rem;
+    }
 
     p {
       text-align: justify;
@@ -102,6 +117,14 @@ export default {
       object-position: center;
     }
   }
-
+}
+.title-items{
+  @media (min-width : 320px) and (max-width : 600px){
+    font-size : 1rem;
+  }
+  @media (max-width : 319px) {
+    font-size : 14px;
+    letter-spacing: 2px;
+  }
 }
 </style>

@@ -55,7 +55,7 @@
 
 <script>
 export default {
-  name: "index",
+  name: "Footer",
   props: {
     articles: Array,
     url: {

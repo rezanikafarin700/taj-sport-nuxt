@@ -1,11 +1,14 @@
 .footer {
-  background-color: #ffffff;;
+  background-color: #ffffff;
   padding: 4rem 2rem 1rem 2rem;
   font-weight: bold;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 
+  @media (max-width: 450px) {
+    padding-top: 4rem;
+  }
 
   &__icons {
     display: flex;
@@ -23,7 +26,6 @@
     margin: 1rem;
     cursor: pointer;
   }
-
 }
 
 .end-intro {
@@ -37,7 +39,11 @@
     font-size: 16px;
     width: 600px;
     margin: 0 auto;
-    text-align: right
+    text-align: right;
+    @media (max-width: 650px) {
+      width: 100%;
+      padding: 1rem;
+    }
   }
 
   &__foot {
@@ -45,100 +51,48 @@
     direction: ltr;
     text-align: left;
   }
-
 }
 
 .small-font {
   font-size: 12px;
   font-weight: 300;
   border-top: 1px solid #999999;
-  padding-top: .5rem;
+  padding-top: 0.5rem;
 }
 
-.items{
+.items {
   display: flex;
   justify-content: center;
   align-items: center;
-  &__item{
+  &__item {
     width: calc(25% - 1rem);
-      flex: 0 0 auto;
-      margin : .5rem;
+    flex: 0 0 auto;
+    margin: 0.5rem;
   }
-  &__ratio{
+  &__ratio {
     padding-top: 100%;
     position: relative;
   }
 }
 
-@media (max-width: 320px) {
-  .footer {
-    padding: 0;
-  }
-
-  .end-intro {
-    &__text {
-      width: 100%;
-      padding: 1rem;
+.end-intro {
+  &__text {
+    width: 50%;
+    padding: 1rem;
+    @media (max-width : 992px) {
+      width: 80%;
     }
   }
-  .small-font{
+}
+.small-font {
+  padding: 1rem 1rem 0 1rem;
+  @media (max-width: 450px) {
     padding: 1rem 1rem 0 1rem;
   }
 }
-
-@media (max-width: 425px) and (min-width: 320px) {
-  .wrapper {
-    width: 300px;
-  }
-  .footer {
-    padding: 0;
-  }
-  .end-intro {
-    &__text {
-      width: 100%;
-      padding: 1rem;
-    }
-  }
-  .small-font{
-    padding: 1rem 1rem 0 1rem;
-  }
-}
-
-@media (max-width: 650px) and (min-width: 426px) {
-  .wrapper {
-    width: 400px;
-  }
-  .end-intro {
-    &__text {
-      width: 100%;
-      padding: 1rem;
-    }
-  }
-
-
-
-}
-@media (max-width: 768px) and (min-width: 650px) {
-  .wrapper {
-    width: 500px;
-  }
-}
-
-@media (max-width: 922px) and (min-width: 769px) {
-  .wrapper {
-    width: 700px;
-  }
-}
-
-@media (max-width: 1024px) and (min-width: 923px) {
-  .wrapper {
-    width: 850px;
-  }
-}
-
-@media (max-width: 1200px) and (min-width: 1025px) {
-  .wrapper {
-    width: 950px;
+.wrapper{
+  @media (max-width : 1200px) {
+    width : 100%;
   }
 }
 

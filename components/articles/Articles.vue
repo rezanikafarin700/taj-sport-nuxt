@@ -1,7 +1,7 @@
 <template>
   <div class="articles rtl">
     <header>
-      <hr class="line" />
+      <div class="line"></div>
       <div class="title-items dastnevis">مقاله های خواندنی</div>
     </header>
     <div class="articles__group">
@@ -152,6 +152,7 @@ footer {
     border: none;
     border-top: 1px solid #959595;
     margin: 0 auto;
+    width: 70%;
   }
 }
 

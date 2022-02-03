@@ -24,7 +24,6 @@
       </div>
 
       <div class="parent-items">
-        <div class="space"></div>
         <div class="parent-items__parent-logo">
           <logo />
         </div>
@@ -57,8 +56,7 @@
           <h3 class="title-items center dastnevis">
             آشنایی با محصولات تاج اسپرت
           </h3>
-          <div class="space"></div>
-          <div class="cards">
+          <div class="cards space">
             <div
               class="cards__card"
               v-for="(product, index) in products"
@@ -192,10 +190,17 @@ export default {
     goToRoute(index) {
       switch (index) {
         case 0:
-          this.$router.push({ name: "history-History" });
+          this.$router.push({ name: "Articles-history-History" });
           break;
-        // case 1 :
-        //   break;
+        case 1:
+          this.$router.push({ name: "Articles-rules-Rules" });
+          break;
+        case 2:
+          this.$router.push({ name: "Articles-method-Method" });
+          break;
+        case 3:
+          this.$router.push({ name: "Articles-buy-Buy" });
+          break;
       }
     }
   },

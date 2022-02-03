@@ -1,6 +1,6 @@
 <template>
   <div class="parent">
-    <transition>
+    <transition name="slide">
       <div class="parent__content">
         <div class="title-items dastnevis">تاج اسپرت</div>
         <img width="90" height="60" src="~assets/images/gif/spinner.gif" />
@@ -34,10 +34,10 @@ export default {
     transition: all .5s;
   }
 }
-.v-enter{
-  transform: translateY(-200px);
-}
-.v-enter-active{
-  transform: translateY(-200px);
-}
+// .v-enter{
+//   transform: translateY(-200px);
+// }
+// .v-enter-active{
+//   transform: translateY(-200px);
+// }
 </style>

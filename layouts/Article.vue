@@ -13,13 +13,13 @@
 
 <script>
 import Header from "@/components/header/Header";
-import FooterArticle from '@/components/FooterPanel/footer-article/FooterArticle'
+import FooterArticle from "@/components/FooterPanel/footer-article/FooterArticle";
 export default {
   name: "Article",
-  components: { Header,FooterArticle },
-  methods : {
-    goToRoute(){
-      this.$router.push({name : 'index'})
+  components: { Header, FooterArticle },
+  methods: {
+    goToRoute() {
+      this.$router.push({ name: "index" });
     }
   }
 };
@@ -42,6 +42,15 @@ export default {
     display: inline-block;
     padding: 11px 15px 9px 15px;
     cursor: pointer;
+    @media (max-width : 420px) {
+      font-size: 14px;
+      white-space: nowrap;
+    }
+  }
+}
+.wrapper-small{
+  @media (max-width : 768px) {
+    width : 100%;
   }
 }
 </style>
