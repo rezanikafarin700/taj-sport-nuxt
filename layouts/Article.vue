@@ -8,6 +8,7 @@
       </div>
     </div>
     <FooterArticle />
+    <div class="test"></div>
   </div>
 </template>
 
@@ -52,5 +53,9 @@ export default {
   @media (max-width : 768px) {
     width : 100%;
   }
+}
+.test{
+  background : #E5E5E5;
+  height: 250px;;
 }
 </style>

@@ -1,26 +1,26 @@
 <template>
-  <div class="parent">
-    <article class="parent__article left">
-      <div class="parent__image">
+  <div class="body">
+    <div class="body__item body__left">
+      <div class="body__image">
         <img src="@/assets/images/articles/2.jpg" alt="مقاله های فوتبال دستی" />
       </div>
-      <div class="parent__arrow">
+      <div class="body__help">
         <ArrowGreen class="rev" />
-        <p class="rtl">مقاله قبلی</p>
+        <p class="italic">Prev Article</p>
       </div>
-    </article>
-    <article class="parent__article right">
-      <div class="parent__arrow">
-        <ArrowGreen />
-        <p>مقاله بعدی</p>
-      </div>
-      <div class="parent__image">
+    </div>
+    <div class="body__item body__right">
+      <div class="body__image">
         <img
           src="@/assets/images/articles/12.jpg"
           alt="مقاله های فوتبال دستی"
         />
       </div>
-    </article>
+      <div class="body__help">
+        <ArrowGreen />
+        <p class="italic">Next Article</p>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -28,41 +28,54 @@
 import ArrowGreen from "@/components/svg/ArrowGreen";
 export default {
   name: "FooterArticle",
-  components: { ArrowGreen }
+  components: {
+    ArrowGreen
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-.parent {
+.body {
+  width: 100%;
+  background-color: #FFF;
   display: flex;
   justify-content: space-between;
-  align-items: center;
-  padding: 2rem 0;
-  background: #fff;
   overflow: hidden;
-  width: 100%;
+  margin-top: 2rem;
 
-  &__article {
+  &__item {
+    width: 730px;
+    height: 260px;
     display: flex;
-    transition: all 0.5s;
-    cursor: pointer;
-    &.left {
-      transform: translateX(calc(50% - 650px));
-      &:hover {
-        transform: translateX(0);
+    transition: all 1s;
+    &:hover{
+      p{
+        color : #28a46c;
       }
     }
-    &.right {
-      transform: translateX(calc(50% - 300px));
-      &:hover {
-        transform: translateX(-180px);
-      }
+
+  }
+  &__left {
+    transform: translateX(-300px);
+    &:hover {
+      transform: translateX(-2rem);
     }
   }
-
+  &__right {
+    transform: translateX(300px);
+    flex-direction: row-reverse;
+    &:hover {
+      transform: translateX(2rem);
+    }
+  }
   &__image {
-    min-width: 600px;
-    height: 260px;
+    width: 80%;
+    flex: 0 0 auto;
+    height: 100%;
+    margin : 0 2rem;
+    @media (max-width: 1000px) {
+      display: none;
+    }
 
     img {
       width: 100%;
@@ -71,20 +84,16 @@ export default {
       object-position: center;
     }
   }
-  &__arrow {
-    width: 100px;
-    height: 15px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 2rem;
-
-    p {
-      font-size: 10px;
-    }
+  &__help{
+    text-align: center;
+    padding-top : 3.5rem;
   }
 }
-.rev {
-  transform: rotate(180deg);
+.italic {
+  font-style: italic;
+  font-size: 12px;
+}
+.rev{
+  transform : rotate(180deg);
 }
 </style>
