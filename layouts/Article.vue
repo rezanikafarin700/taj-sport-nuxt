@@ -22,7 +22,7 @@ export default {
     goToRoute() {
       this.$router.push({ name: "index" });
     }
-  }
+  },
 };
 </script>
 
@@ -43,19 +43,19 @@ export default {
     display: inline-block;
     padding: 11px 15px 9px 15px;
     cursor: pointer;
-    @media (max-width : 420px) {
+    @media (max-width: 420px) {
       font-size: 14px;
       white-space: nowrap;
     }
   }
 }
-.wrapper-small{
-  @media (max-width : 768px) {
-    width : 100%;
+.wrapper-small {
+  @media (max-width: 768px) {
+    width: 100%;
   }
 }
-.test{
-  background : #E5E5E5;
-  height: 250px;;
+.test {
+  background: #e5e5e5;
+  height: 250px;
 }
 </style>

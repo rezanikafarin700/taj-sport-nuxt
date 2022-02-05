@@ -136,7 +136,7 @@
           </div>
         </div>
       </div>
-      <Articles v-show="!isArticlePath" />
+      <Articles  />
       <Footer />
     </template>
   </div>

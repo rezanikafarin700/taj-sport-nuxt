@@ -9,7 +9,7 @@
   </div>
 </template>
 <script>
-import { text } from './variables';
+import { text } from "./variables";
 import ContinueArticle from "@/components/continue-article/ContinueArticle";
 export default {
   name: "History",
@@ -18,11 +18,11 @@ export default {
   data() {
     return {
       text,
-      images: ["11.jpg", "image2.jpg","image3.jpg"],
-    }
-  }
+      images: ["11.jpg", "image2.jpg", "image3.jpg"],
+  
+    };
+  },
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

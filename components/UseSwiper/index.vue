@@ -2,13 +2,13 @@
   <div v-swiper="swiperOption" class=" ml-auto relative swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide img-1">
-        <img src="@/assets/images/articles/6.jpg" alt="" />
+        <!-- <img src="@/assets/images/articles/6.jpg" alt="" /> -->
       </div>
       <div class="swiper-slide  img-2">
-        <img src="@/assets/images/articles/12.jpg" alt="" />
+        <!-- <img src="@/assets/images/articles/12.jpg" alt="" /> -->
       </div>
       <div class="swiper-slide img-3">
-        <img src="@/assets/images/articles/2.jpg" alt="" />
+        <!-- <img src="@/assets/images/articles/2.jpg" alt="" /> -->
       </div>
     </div>
     <div class="swiper-button-prev" slot="button-prev"></div>
