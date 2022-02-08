@@ -8,7 +8,7 @@
       </div>
     </div>
     <FooterArticle />
-    <div class="test"></div>
+    <div class="foot-article"></div>
   </div>
 </template>
 
@@ -41,11 +41,17 @@ export default {
     color: #b2b2b2;
     border: 1px solid #b2b2b2;
     display: inline-block;
-    padding: 11px 15px 9px 15px;
+    padding: .5rem 2rem;
+    border-radius: .25rem;
+    text-decoration: none;
+    min-width: 150px;
+    text-align: center;
     cursor: pointer;
     @media (max-width: 420px) {
       font-size: 14px;
       white-space: nowrap;
+      min-width: 100px;
+      padding: .5rem 1rem;
     }
   }
 }
@@ -54,7 +60,7 @@ export default {
     width: 100%;
   }
 }
-.test {
+.foot-article {
   background: #e5e5e5;
   height: 250px;
 }

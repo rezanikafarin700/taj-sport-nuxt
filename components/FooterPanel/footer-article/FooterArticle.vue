@@ -37,28 +37,28 @@ export default {
           nextPath: "/Articles/rules/Rules",
           prevPath: "/Articles/buy/Buy",
           nextImage: require("@/assets/images/rules/image1.jpg"),
-          prevImage: require("@/assets/images/buy/image1.jpg"),
+          prevImage: require("@/assets/images/buy/image1.jpg")
         },
         {
           currentPath: "/Articles/rules/Rules",
           nextPath: "/Articles/method/Method",
           prevPath: "/Articles/history/History",
           nextImage: require("@/assets/images/methods/span.jpg"),
-          prevImage: require("@/assets/images/history/11.jpg"),
+          prevImage: require("@/assets/images/history/11.jpg")
         },
         {
           currentPath: "/Articles/method/Method",
           nextPath: "/Articles/buy/Buy",
           prevPath: "/Articles/rules/Rules",
           nextImage: require("@/assets/images/buy/image1.jpg"),
-          prevImage: require("@/assets/images/rules/image1.jpg"),
+          prevImage: require("@/assets/images/rules/image1.jpg")
         },
         {
           currentPath: "/Articles/buy/Buy",
           nextPath: "/Articles/history/History",
           prevPath: "/Articles/method/Method",
           nextImage: require("@/assets/images/history/11.jpg"),
-          prevImage: require("@/assets/images/methods/span.jpg"),
+          prevImage: require("@/assets/images/methods/span.jpg")
         }
       ]
     };
@@ -85,9 +85,9 @@ export default {
   overflow: hidden;
   margin-top: 2rem;
 
-  a{
+  a {
     text-decoration: none;
-    color : #222;
+    color: #222;
   }
 
   &__item {
@@ -104,10 +104,13 @@ export default {
   &__left {
     transform: translateX(-300px);
     &:hover {
-      transform: translateX(-4rem);
+      transform: translateX(-2rem);
     }
     @media (max-width: 1000px) {
-      transform: translateX(-4rem);
+      transform: translateX(0);
+      &:hover {
+        transform: translateX(0);
+      }
     }
   }
   &__right {
@@ -117,7 +120,10 @@ export default {
       transform: translateX(2rem);
     }
     @media (max-width: 1000px) {
-      transform: translateX(2rem);
+      transform: translateX(0);
+      &:hover {
+        transform: translateX(0);
+      }
     }
   }
   &__image {

@@ -45,13 +45,16 @@
         </div>
       </div>
 
-      <div class="container-products-intro">
+      <!-- <div class="container-products-intro">
         <div class="wrapper">
           <ProductIntro :products="products" />
         </div>
-      </div>
+      </div> -->
 
       <div class="container-cards">
+        <div class="parent-items__parent-logo">
+          <Logo />
+        </div>
         <div class="wrapper">
           <h3 class="title-items center dastnevis">
             آشنایی با محصولات تاج اسپرت
@@ -136,7 +139,7 @@
           </div>
         </div>
       </div>
-      <Articles  />
+      <Articles />
       <Footer />
     </template>
   </div>
@@ -185,7 +188,8 @@ export default {
       this.showPages = e;
     },
     goToFoosball(id) {
-      this.$router.push({ name: "Buy", params: { id: id } });
+      this.$router.push({ name: "buy-Buy", params: { id: id } });
+      localStorage.setItem("productId",id);
     },
     goToRoute(index) {
       switch (index) {

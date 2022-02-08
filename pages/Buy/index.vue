@@ -25,8 +25,7 @@
       </div>
       <!-- end of swiper -->
 
-      <a target="_blank" href="https://basalam.com/fotballtoys/product/2095458"
-        >خرید</a
+      <a target="_blank" href="https://basalam.com/fotballtoys/product/2095458">خرید</a
       >
       {{ product }}
       <hr />
