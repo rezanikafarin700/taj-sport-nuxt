@@ -11,7 +11,7 @@
           <div class="product-information">
             <div class="item">
               <img
-                :src="`${url}${image.name}`"
+                :src="`${urlDefault}${image.name}`"
                 alt="انواع فوتبال دستی تاج اسپرت"
               />
             </div>
@@ -45,12 +45,6 @@ export default {
       type: Array,
       required: true
     },
-    url: {
-      type: String,
-      default() {
-        return this.urlDefault;
-      }
-    }
   },
 
   data() {
@@ -111,17 +105,17 @@ export default {
   @media (max-width: 576px) {
     padiing-bottom: 1rem;
   }
-  @media (max-width : 1200px) {
+  @media (max-width: 1200px) {
     margin-top: 3rem;
   }
 
   &--ratio {
     padding-top: 100%;
     position: relative;
-    @media (min-width : 767px) and (max-width : 1200px){
+    @media (min-width: 767px) and (max-width: 1200px) {
       padding-top: 50%;
     }
-      @media (max-width : 768px) {
+    @media (max-width: 768px) {
       padding-top: 100%;
     }
   }
@@ -139,9 +133,9 @@ export default {
     background-size: cover;
     background-image: url("@/assets/icons/arrow-left.png");
     z-index: 100;
-    @media (max-width : 768px) {
-      top : 40%;
-      left : 0;
+    @media (max-width: 768px) {
+      top: 40%;
+      left: 0;
     }
   }
   &__right-btn {
@@ -157,9 +151,9 @@ export default {
     background-size: cover;
     background-image: url("@/assets/icons/arrow-right.png");
     z-index: 100;
-    @media (max-width : 768px) {
-      top : 40%;
-      right : 0;
+    @media (max-width: 768px) {
+      top: 40%;
+      right: 0;
     }
   }
 
@@ -226,5 +220,4 @@ export default {
     }
   }
 }
-
 </style>

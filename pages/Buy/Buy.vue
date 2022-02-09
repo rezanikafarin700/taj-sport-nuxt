@@ -1,51 +1,57 @@
 <template>
   <div>
-    <div class="content">
-      <div class="content__images">
-        <Slider :images="images" />
-      </div>
-      <div class="content__texts">
-        <div class="title-items dastnevis">{{ product.name }}</div>
-        <div class="content__info dastnevis">
-          <p>قیمت : {{ product.price }} تومان</p>
-          <p>اندازه : {{ product.size }}</p>
-          <p>مدل : {{ product.model }}</p>
-          <p>کد محصول : {{ product.code }}</p>
-          <p>جنس : {{ product.material }}</p>
-          <p>تخفیف : {{ product.discount }}</p>
+    <MainLoading v-if="product == null" />
+    <template v-else>
+      <div class="content">
+        <div class="content__images">
+          <Slider :images="images" />
         </div>
-        <hr />
-        <div class="title-items dastnevis">توضیحات</div>
-        <p>{{ product.description }}</p>
+        <div class="content__texts">
+          <div class="title-items dastnevis">{{ product.name }}</div>
+          <div class="content__info dastnevis">
+            <p>قیمت : {{ product.price }} تومان</p>
+            <p>اندازه : {{ product.size }}</p>
+            <p>مدل : {{ product.model }}</p>
+            <p>کد محصول : {{ product.code }}</p>
+            <p>جنس : {{ product.material }}</p>
+            <p>تخفیف : {{ product.discount }}</p>
+          </div>
+          <hr />
+          <div class="title-items dastnevis">توضیحات</div>
+          <p>{{ product.description }}</p>
+        </div>
       </div>
-    </div>
-    <div class="content__btns">
-      <div class="content__btn" @click="$router.push({ name: 'index' })">
-        صفحه اصلی
+      <div class="content__btns">
+        <div class="content__btn" @click="$router.push({ name: 'index' })">
+          صفحه اصلی
+        </div>
+        <a
+          class="content__btn"
+          target="_blank"
+          href="https://basalam.com/fotballtoys/product/2095458"
+          >خرید</a
+        >
       </div>
-      <a
-        class="content__btn"
-        target="_blank"
-        href="https://basalam.com/fotballtoys/product/2095458"
-        >خرید</a
-      >
-    </div>
+    </template>
   </div>
 </template>
 
 <script>
 import axios from "axios";
 import Slider from "@/components/slider/Slider";
+import MainLoading from "@/components/loading/MainLoading";
+
 export default {
   name: "Buy",
   layout: "Product",
   components: {
-    Slider
+    Slider,
+    MainLoading
   },
 
   data() {
     return {
-      product: {},
+      product: null,
       images: [],
       productId: -1
     };
@@ -149,7 +155,7 @@ export default {
     background: #fff;
     margin-top: 2rem;
     @media (max-width: 768px) {
-      padding : 1.5rem 1rem;
+      padding: 1.5rem 1rem;
     }
   }
   &__btn {

@@ -76,7 +76,6 @@
         <div class="article space">
           <div
             class="article__image"
-            :style="{ backgroundImage: `url(images/articles/6.jpg)` }"
           >
             <div class="article__image--ratio">
               <img
