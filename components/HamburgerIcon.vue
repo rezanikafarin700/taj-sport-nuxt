@@ -25,6 +25,7 @@
               this.$refs.line1.style.transform = "rotate(45deg)";
               this.$refs.line2.style.transform = "rotate(-45deg)";
               this.closeMode = true;
+              this.$nuxt.$emit('onClick',true);
             }
             else{
               this.$refs.item1.style.opacity = "1";
@@ -32,6 +33,7 @@
               this.$refs.line1.style.transform = "rotate(0)";
               this.$refs.line2.style.transform = "rotate(0)";
               this.closeMode = false;
+              this.$nuxt.$emit('onClick',false);
 
             }
           }

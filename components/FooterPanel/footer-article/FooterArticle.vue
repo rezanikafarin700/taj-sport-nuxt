@@ -1,5 +1,5 @@
 <template>
-  <div class="body">
+  <div class="body" :class="{ opacity: openModal }">
     <a :href="handlePath.prevPath" class="body__item body__left">
       <div class="body__image">
         <img :src="handlePath.prevImage" alt="مقاله های فوتبال دستی" />
@@ -30,6 +30,7 @@ export default {
   },
   data() {
     return {
+      openModal: false,
       handlePath: {},
       articlesPath: [
         {
@@ -66,12 +67,20 @@ export default {
   methods: {
     goToRoute(path) {
       this.$router.push({ name: path });
+    },
+    getStatusOpenModal(event) {
+      this.openModal = event;
+      console.log("event = ", event);
     }
   },
   mounted() {
     this.handlePath = this.articlesPath.find(article => {
       return article.currentPath == $nuxt.$route.path;
     });
+    this.$nuxt.$on("onClick", this.getStatusOpenModal);
+  },
+  beforeDestroy() {
+    this.$nuxt.$off("onClick", this.getStatusOpenModal);
   }
 };
 </script>
@@ -84,10 +93,15 @@ export default {
   justify-content: space-between;
   overflow: hidden;
   margin-top: 2rem;
+  transition: all .5s ease;
 
   a {
     text-decoration: none;
     color: #222;
+  }
+
+  &.opacity {
+    opacity: .1;
   }
 
   &__item {

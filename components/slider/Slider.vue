@@ -1,5 +1,8 @@
 <template>
   <div class="box">
+    <transition name="fade" mode="out-in">
+      <div class="box__modal" v-if="openModal"></div>
+    </transition>
     <div class="box--ratio"></div>
     <div class="box__left-btn"></div>
     <div class="box__right-btn"></div>
@@ -44,11 +47,12 @@ export default {
     images: {
       type: Array,
       required: true
-    },
+    }
   },
 
   data() {
     return {
+      openModal: false,
       urlDefault: "",
       swiperOption: {
         slidesPerView: 1,
@@ -85,9 +89,18 @@ export default {
       }
     };
   },
+  methods: {
+    getStatusOpenModal(event) {
+      this.openModal = event;
+    }
+  },
   mounted() {
     let productId = localStorage.getItem("productId");
     this.urlDefault = process.env.IMAGE_URL + `products/${productId}/`;
+    this.$nuxt.$on("onClick", this.getStatusOpenModal);
+  },
+  beforeDestroy() {
+    this.$nuxt.$off("onClick", this.getStatusOpenModal);
   }
 };
 </script>
@@ -101,6 +114,18 @@ export default {
   position: relative;
   user-select: none;
   height: 50%;
+
+  &__modal {
+    background: rgba(255, 255, 255, 0.9);
+    width: 100%;
+    height: 100%;
+    padding-top: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: all 0.5s ease;
+    z-index: 2;
+  }
 
   @media (max-width: 576px) {
     padiing-bottom: 1rem;
@@ -132,7 +157,7 @@ export default {
     background-position: center;
     background-size: cover;
     background-image: url("@/assets/icons/arrow-left.png");
-    z-index: 100;
+    z-index: 1;
     @media (max-width: 768px) {
       top: 40%;
       left: 0;
@@ -150,7 +175,7 @@ export default {
     background-position: center;
     background-size: cover;
     background-image: url("@/assets/icons/arrow-right.png");
-    z-index: 100;
+    z-index: 1;
     @media (max-width: 768px) {
       top: 40%;
       right: 0;

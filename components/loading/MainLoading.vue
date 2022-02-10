@@ -1,11 +1,11 @@
 <template>
   <div class="parent">
-    <transition name="slide">
+    <!-- <transition name="slide" mode="out-in"> -->
       <div class="parent__content">
         <div class="title-items dastnevis">تاج اسپرت</div>
         <img width="90" height="60" src="~assets/images/gif/spinner.gif" />
       </div>
-    </transition>
+    <!-- </transition> -->
   </div>
 </template>
 

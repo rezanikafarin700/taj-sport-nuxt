@@ -1,31 +1,33 @@
 <template>
   <div class="parent" :class="{ 'border-banner': borderBanner }">
     <div class="parent__slide" v-for="(image, i) in images" :key="i">
-      <div
-        v-show="i === index"
-        class="parent__image"
-        :class="{ fade: isFade }"
-        :style="{ backgroundImage: `url(${url}${image.id}/${image.image})` }"
-      >
-        <div class="parent__overlay">
+      <transition name="fade" mode="out-in">
+        <div
+          v-show="i === index"
+          class="parent__image"
+          :class="{ fade: isFade }"
+          :style="{ backgroundImage: `url(${url}${image.id}/${image.image})` }"
+        >
+          <div class="parent__overlay">
+            <div class="parent__ratio"></div>
+          </div>
+          <transition name="translate">
+            <div class="parent__texts" v-if="showTexts">
+              <h1 class="parent__title">{{ image.title }}</h1>
+              <p>{{ image.description }}</p>
+            </div>
+          </transition>
           <div class="parent__ratio"></div>
-        </div>
-        <transition name="translate">
-          <div class="parent__texts" v-if="showTexts">
-            <h1 class="parent__title">{{ image.title }}</h1>
-            <p>{{ image.description }}</p>
-          </div>
-        </transition>
-        <div class="parent__ratio"></div>
-        <div class="parent__btns" v-if="showBtns">
-          <div class="parent__btn" @click="next">Next</div>
-          <div @click="scrollBotton">
-            <ArrowBottom />
-          </div>
+          <div class="parent__btns" v-if="showBtns">
+            <div class="parent__btn" @click="next">Next</div>
+            <div @click="scrollBotton">
+              <ArrowBottom />
+            </div>
 
-          <div class="parent__btn" @click="prev">Prev</div>
+            <div class="parent__btn" @click="prev">Prev</div>
+          </div>
         </div>
-      </div>
+      </transition>
     </div>
     <div class="btn-scroll" @click="scrollTop" v-if="showScroll"></div>
   </div>
@@ -123,8 +125,8 @@ export default {
   border: 26px solid #ffffff;
   border-top: none;
   border-bottom: none;
-  @media (max-width : 768px) {
-    border : none;
+  @media (max-width: 768px) {
+    border: none;
   }
 
   &__slide {
@@ -168,7 +170,7 @@ export default {
     user-select: text;
     font-weight: 400;
     position: fixed;
-    transition: all 0.5s;
+    transition: all 0.5s ease;
 
     @media (max-width: 768px) {
       display: none;
@@ -233,7 +235,7 @@ export default {
   align-items: center;
   position: fixed;
   bottom: 2rem;
-  right: .5rem;
+  right: 0.5rem;
   border-radius: 100%;
   cursor: pointer;
   z-index: 1000;

@@ -95,7 +95,7 @@ export default {
     direction: rtl;
     padding: 2rem;
     width: 50%;
-    border-left: 1px solid #999;
+    border-left: 1px solid #e5e5e5;
 
     @media (max-width: 1200px) {
       width: 100%;

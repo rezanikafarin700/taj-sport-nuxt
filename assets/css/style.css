@@ -1,51 +1,51 @@
-body{
-    font-family: Vazir;
+body {
+  font-family: Vazir;
 }
-.wrapper{
-    width: 1150px;
-    margin : 0 auto;
+.wrapper {
+  width: 1150px;
+  margin: 0 auto;
 }
-.wrapper-small{
-    width: 700px;
-    margin : 0 auto;
+.wrapper-small {
+  width: 700px;
+  margin: 0 auto;
 }
-.space-bottom{
-    margin-bottom: 50px;
+.space-bottom {
+  margin-bottom: 50px;
 }
-.box-panel{
-    padding: 40px;
-    background-color: #eee;
-    border-radius: 4px;
-    box-shadow: 0 0 1rem 0 #000;
+.box-panel {
+  padding: 40px;
+  background-color: #eee;
+  border-radius: 4px;
+  box-shadow: 0 0 1rem 0 #000;
 }
 .dastnevis {
-    font-family: Dastnevis;
-    font-weight: bold;
+  font-family: Dastnevis;
+  font-weight: bold;
 }
-.rtl{
-    direction: rtl;
-    text-align: right;
+.rtl {
+  direction: rtl;
+  text-align: right;
 }
-.ltr{
-    direction: ltr;
-    text-align: left;
+.ltr {
+  direction: ltr;
+  text-align: left;
 }
-.btns{
-    display: flex;
-    justify-content: space-between;
+.btns {
+  display: flex;
+  justify-content: space-between;
 }
-.panel-items{
-    display: flex;
+.panel-items {
+  display: flex;
 }
 
-.space{
-    padding: 1.5rem 0;
+.space {
+  padding: 1.5rem 0;
 }
-.center{
-    display: flex;
-    flex-direction: row-reverse;
-    justify-content: center;
-    align-items: center;
+.center {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
 }
 .active {
   color: orangered;
@@ -58,30 +58,42 @@ body{
   text-align: center;
 }
 
-.title-article{
+.title-article {
   font-size: 1rem;
   font-weight: bold;
 }
-.bold{
+.bold {
   font-weight: bold;
 }
 
-.slide-enter{
+/**********************/
+ .slide-enter-to {
   opacity: 0;
-  transform: translateY(-100px);
+  transform: translateY(-100);
 }
-/* .slide-enter-to{} */
 
-.slide-leave-active,
-.slide-enter-active{
+.slide-leave-active{
+  opacity : 0;
   transition: all .5s ease;
+}
+.slide-enter-active {
+  transition: all .5s ease;
+}
+
+
+/*********************/
+.fade-enter {
+  opacity: 0;
+}
+/* .fade-enter-to{} */
+
+.fade-leave-active,
+.fade-enter-active {
+  transition: all 0.5s ease;
 }
 
 /* .slide-leave{} */
 
-.slide-leave-to{
+.fade-leave-to {
   opacity: 0;
-  transform: translateY(100px);
 }
-
-

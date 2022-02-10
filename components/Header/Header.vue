@@ -4,7 +4,7 @@
       <div class="wrapper">
         <div class="parent__items">
           <div class="parent__item">
-            <hamburger-icon />
+            <HamburgerIcon />
           </div>
           <div class="parent__item">
             <div class="dastnevis parent__line-bottom">تاج اسپرت</div>
@@ -72,7 +72,7 @@
 </template>
 
 <script>
-import HamburgerIcon from "../HamburgerIcon";
+import HamburgerIcon from "@/components/HamburgerIcon.vue";
 
 export default {
   name: "Header",
@@ -88,7 +88,8 @@ export default {
 
     goToLogin() {
       this.$router.push({ name: "login" });
-    }
+    },
+
   }
 };
 </script>

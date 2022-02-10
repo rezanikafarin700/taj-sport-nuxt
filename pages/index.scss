@@ -4,6 +4,10 @@
   width: 350px;
 }
 
+.all {
+  transition: all .5s ease;
+}
+
 .article {
   display: flex;
   flex-direction: row-reverse;
@@ -123,7 +127,6 @@
   align-items: center;
   background: #fff;
   position: relative;
-  z-index: 5;
   text-align: center;
   padding: 3rem 0;
   @media (max-width: 425px) {
@@ -149,11 +152,11 @@
   background-color: $background-product;
 }
 
-.fade-enter,
-.fade-leave-to {
-  transform: scale(0.5) rotateX(45deg) translateY(-50px);
-  opacity: 0;
-}
+// .fade-enter,
+// .fade-leave-to {
+//   transform: scale(0.5) rotateX(45deg) translateY(-50px);
+//   opacity: 0;
+// }
 
 .para {
   line-height: 1.4;
