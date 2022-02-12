@@ -13,7 +13,7 @@
         </div>
       </div>
       <FooterArticle />
-      <div class="parent__foot-article"></div>
+      <FooterProduct />
     </div>
   </div>
 </template>
@@ -21,10 +21,11 @@
 <script>
 import Header from "@/components/header/Header";
 import Modal from "@/components/modal/Modal.vue";
+import FooterProduct from "@/components/FooterPanel/footer-product/FooterProduct";
 import FooterArticle from "@/components/FooterPanel/footer-article/FooterArticle";
 export default {
   name: "Article",
-  components: { Modal ,Header, FooterArticle},
+  components: { Modal, Header, FooterArticle, FooterProduct },
   data() {
     return {
       openModal: false

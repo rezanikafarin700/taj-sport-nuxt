@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <ContinueArticle :images="images" title="تاریخچه فوتبال دستی" url="assets/images/history"/>
+  <div class="root">
+    <TestComponent :initialCounter="4" />
   </div>
 </template>
 
@@ -45,6 +45,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.root{
+  margin : 100px;
+}
 .body {
   width: 100%;
   background-color: yellow;

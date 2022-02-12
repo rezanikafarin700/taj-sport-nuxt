@@ -20,9 +20,6 @@
   &__icon {
     width: 20px;
     height: 20px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
     margin: 1rem;
     cursor: pointer;
   }
@@ -53,12 +50,6 @@
   }
 }
 
-.small-font {
-  font-size: 12px;
-  font-weight: 300;
-  border-top: 1px solid #999999;
-  padding-top: 0.5rem;
-}
 
 .items {
   display: flex;

@@ -114,6 +114,9 @@ export default {
         color: #28a46c;
       }
     }
+    @media (max-width : 768px) {
+      height: 130px;
+    }
   }
   &__left {
     transform: translateX(-300px);

@@ -47,6 +47,15 @@ body {
   justify-content: center;
   align-items: center;
 }
+
+.small-font {
+  font-size: 12px;
+  font-weight: 300;
+  border-top: 1px solid #999999;
+  padding-top: 0.5rem;
+  margin-top : 1rem;
+}
+
 .active {
   color: orangered;
   font-weight: bold;

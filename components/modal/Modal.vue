@@ -1,14 +1,18 @@
 <template>
-  <div class="main">
-    <ul class="main__menu rtl dastnevis">
-      <li
-        v-for="(item, index) in items"
-        :key="index"
-        @click="goToRoute(index, item)"
-      >
-        {{ item.title }}
-      </li>
-    </ul>
+  <div>
+    <transition name="fade" mode="out-in">
+      <div class="main" v-if="isModal">
+        <ul class="main__menu rtl dastnevis">
+          <li
+            v-for="(item, index) in items"
+            :key="index"
+            @click="goToRoute(index, item)"
+          >
+            {{ item.title }}
+          </li>
+        </ul>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -17,6 +21,7 @@ export default {
   name: "Modal",
   data() {
     return {
+      isModal: true,
       items: [
         { title: "خرید", path: "", id: 0 },
         { title: "جستجو", path: "", id: 0 },
@@ -42,6 +47,8 @@ export default {
           break;
         case 5:
           this.$router.push({ name: item.path });
+          this.isModal = false;
+          this.$nuxt.$emit('onCloseModal',true);
           break;
       }
     }

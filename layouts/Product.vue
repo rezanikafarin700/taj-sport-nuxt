@@ -5,7 +5,7 @@
       <div class="wrapper">
         <Nuxt />
       </div>
-      <div class="parent__foot-article"></div>
+      <FooterProduct />
       <transition name="fade" mode="out-in">
       <Modal  v-if="openModal" />
       </transition>
@@ -16,9 +16,11 @@
 <script>
 import Header from "@/components/header/Header";
 import Modal from "@/components/modal/Modal.vue";
+import FooterProduct from '@/components/FooterPanel/footer-product/FooterProduct'
+
 export default {
   name: "Product",
-  components: { Header, Modal },
+  components: { Header, Modal,FooterProduct },
   data() {
     return {
       openModal: false
@@ -54,7 +56,7 @@ export default {
   }
 }
 .wrapper {
-  padding: 100px 0;
+  padding-top: 100px;
   @media (max-width: 1200px) {
     width: 100%;
     padding: 0;
