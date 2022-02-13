@@ -11,10 +11,22 @@
           <div class="content__info dastnevis">
             <p>قیمت : {{ product.price }} تومان</p>
             <p>اندازه : {{ product.size }}</p>
+            <p>
+              ارتفاع :
+              <span v-if="product.height == 0">ندارد</span>
+              <span v-else>{{ product.height }} سانتی متر</span>
+            </p>
+            <p>
+              وزن :
+              <span v-if="product.weight == 0">ندارد</span>
+              <span v-else>{{ product.weight }} گرم</span>
+            </p>
+            <p>ابعاد دروازه : {{ product.gate }}</p>
+            <p>ابعاد آدمک : {{ product.manikin }}</p>
             <p>مدل : {{ product.model }}</p>
             <p>کد محصول : {{ product.code }}</p>
             <p>جنس : {{ product.material }}</p>
-            <p>تخفیف : {{ product.discount }}</p>
+            <p>تخفیف : {{ product.discount }} درصد</p>
           </div>
           <hr />
           <div class="title-items dastnevis">توضیحات</div>

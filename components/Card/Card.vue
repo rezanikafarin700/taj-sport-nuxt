@@ -21,8 +21,11 @@
         <div class="card__text">
           <div>قیمت : {{ product.price.toLocaleString("fa") }} تومان</div>
           <div>اندازه : {{ product.size }}</div>
+          <div>ارتفاع :
+            <span v-if="product.height == 0">ندارد</span>
+            <span v-else>{{ product.height }} سانتی متر</span>
+            </div>
           <div>مدل : {{ product.model }}</div>
-          <div>کد محصول : {{ product.code }}</div>
         </div>
       </div>
     </div>

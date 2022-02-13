@@ -113,7 +113,7 @@ export default {
   flex: 0 0 auto;
   position: relative;
   user-select: none;
-  height: 50%;
+  height: 60%;
 
   &__modal {
     background: rgba(255, 255, 255, 0.9);
