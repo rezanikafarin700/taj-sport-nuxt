@@ -14,7 +14,20 @@
 					<input type="text" id="model" name="model" placeholder="مثلا تاشو" v-model="product.model"><br>
 
 					<label for="size">اندازه</label>
-					<input type="text" id="size" name="size" placeholder="مثلا 75 * 120" v-model="product.size"><br>
+					<input type="text" id="size" name="size" placeholder="مثلا 75 x 120" v-model="product.size"><br>
+
+					<label for="height">ارتفاع</label>
+					<input type="text" id="height" name="height" placeholder="مثلا سانتیمتر 120" v-model="product.height"><br>
+
+					<label for="weight">وزن</label>
+					<input type="text" id="weight" name="weight" placeholder="مثلا 1000 گرم " v-model="product.weight"><br>
+
+					<label for="gate">ابعاد دروازه</label>
+					<input type="text" id="gate" name="gate" placeholder="مثلا ۵x۱۴ سانتی‌متر" v-model="product.gate"><br>
+
+					<label for="manikin">ابعاد آدمک</label>
+					<input type="text" id="manikin" name="manikin" placeholder="مثلا ۳x۷ سانتی‌متر" v-model="product.manikin"><br>
+
 
 					<label for="price">قیمت</label>
 					<input type="text" id="price" name="price" placeholder="200000" v-model="product.price"><br>
@@ -64,6 +77,10 @@
                 fd.append('name', vm.product.name)
                 fd.append('model', vm.product.model)
                 fd.append('size', vm.product.size)
+                fd.append('height', vm.product.height)
+                fd.append('weight', vm.product.weight)
+                fd.append('gate', vm.product.gate)
+                fd.append('manikin', vm.product.manikin)
                 fd.append('price', vm.product.price)
                 fd.append('discount', vm.product.discount)
                 fd.append('code', vm.product.code)

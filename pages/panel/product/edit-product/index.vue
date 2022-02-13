@@ -58,6 +58,42 @@
             v-model="product.size"
           /><br />
 
+          <label for="height">ارتفاع</label>
+          <input
+            type="text"
+            id="height"
+            name="height"
+            placeholder="مثلا  سانتیمتر120"
+            v-model="product.height"
+          /><br />
+
+          <label for="weight">وزن</label>
+          <input
+            type="text"
+            id="weight"
+            name="weight"
+            placeholder="مثلا  1000 گرم"
+            v-model="product.weight"
+          /><br />
+
+          <label for="gate">ابعاد دروازه</label>
+          <input
+            type="text"
+            id="gate"
+            name="gate"
+            placeholder="مثلا ۵x۱۴ سانتی‌متر"
+            v-model="product.gate"
+          /><br />
+
+          <label for="manikin">ابعاد آدمک</label>
+          <input
+            type="text"
+            id="manikin"
+            name="manikin"
+            placeholder="مثلا ۳x۷ سانتی‌متر"
+            v-model="product.manikin"
+          /><br />
+
           <label for="price">قیمت</label>
           <input
             type="text"
@@ -126,7 +162,7 @@ export default {
   data() {
     return {
       deletedOfOldImages: [],
-      deletedOfOldMainImage : [],
+      deletedOfOldMainImage: [],
       product: {},
       addressFile: "",
       files: [],
@@ -142,7 +178,7 @@ export default {
     getDeleteImage(e) {
       this.deletedOfOldImages = e;
     },
-    getDeleteMainImage(e){
+    getDeleteMainImage(e) {
       this.deletedOfOldMainImage = e;
     },
 
@@ -160,6 +196,10 @@ export default {
       fd.append("name", vm.product.name);
       fd.append("model", vm.product.model);
       fd.append("size", vm.product.size);
+      fd.append("height", vm.product.height);
+      fd.append("weight", vm.product.weight);
+      fd.append("gate", vm.product.gate);
+      fd.append("manikin", vm.product.manikin);
       fd.append("price", vm.product.price);
       fd.append("discount", vm.product.discount);
       fd.append("code", vm.product.code);
@@ -208,8 +248,7 @@ export default {
         this.product = responses[0].data;
         this.images = responses[1].data;
         console.log("this.images = ", this.images);
-        this.url =
-          process.env.IMAGE_URL + "products/" + this.product.id + "/";
+        this.url = process.env.IMAGE_URL + "products/" + this.product.id + "/";
         this.images = this.getArrayFromArray(this.images, "name");
         this.image = this.product.image;
         this.image = this.image.split();

@@ -7,22 +7,21 @@
       </div>
       <div class="card__image">
         <div class="card__image--ratio">
-          <img
-            :src="
-              `${url}${product.id}/${product.image}`
-            "
-            :alt="alt"
-          />
+          <img :src="`${url}${product.id}/${product.image}`" :alt="alt" />
         </div>
       </div>
 
       <div class="card__intro">
         <h3 class="card__title">{{ product.name }}</h3>
         <div class="card__text">
-          <p>قیمت : {{ product.price.toLocaleString("fa") }} تومان</p>
-          <p>اندازه : {{ product.size }}</p>
-          <p>مدل : {{ product.model }}</p>
-          <p>کد محصول : {{ product.code }}</p>
+          <div>قیمت : {{ product.price.toLocaleString("fa") }} تومان</div>
+          <div>اندازه : {{ product.size }}</div>
+          <div>
+            ارتفاع :
+            <span v-if="product.height == 0">ندارد</span>
+            <span v-else>{{ product.height }} سانتی متر</span>
+          </div>
+          <div>مدل : {{ product.model }}</div>
         </div>
       </div>
     </section>
