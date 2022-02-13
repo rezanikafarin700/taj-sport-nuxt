@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="card">
+    <section class="card">
       <div class="card__overlay">
         <div class="dastnevis text">خرید</div>
         <div class="img"></div>
@@ -17,15 +17,15 @@
       </div>
 
       <div class="card__intro">
-        <div class="card__title">{{ product.name }}</div>
+        <h3 class="card__title">{{ product.name }}</h3>
         <div class="card__text">
-          <div>قیمت : {{ product.price.toLocaleString("fa") }} تومان</div>
-          <div>اندازه : {{ product.size }}</div>
-          <div>مدل : {{ product.model }}</div>
-          <div>کد محصول : {{ product.code }}</div>
+          <p>قیمت : {{ product.price.toLocaleString("fa") }} تومان</p>
+          <p>اندازه : {{ product.size }}</p>
+          <p>مدل : {{ product.model }}</p>
+          <p>کد محصول : {{ product.code }}</p>
         </div>
       </div>
-    </div>
+    </section>
   </div>
 </template>
 

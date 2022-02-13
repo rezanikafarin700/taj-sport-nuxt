@@ -2,12 +2,12 @@
   <div>
     <MainLoading v-if="product == null" />
     <template v-else>
-      <div class="content">
+      <section class="content">
         <div class="content__images">
           <Slider :images="images" />
         </div>
         <div class="content__texts">
-          <div class="title-items dastnevis">{{ product.name }}</div>
+          <h1 class="title-items dastnevis">{{ product.name }}</h1>
           <div class="content__info dastnevis">
             <p>قیمت : {{ product.price }} تومان</p>
             <p>اندازه : {{ product.size }}</p>
@@ -20,11 +20,11 @@
           <div class="title-items dastnevis">توضیحات</div>
           <p>{{ product.description }}</p>
         </div>
-      </div>
+      </section>
       <div class="content__btns">
-        <div class="content__btn" @click="$router.push({ name: 'index' })">
+        <button class="content__btn" @click="$router.push({ name: 'index' })">
           صفحه اصلی
-        </div>
+        </button>
         <a
           class="content__btn"
           target="_blank"
@@ -159,6 +159,7 @@ export default {
     }
   }
   &__btn {
+    background-color: #fff;
     color: #b2b2b2;
     border: 1px solid #b2b2b2;
     display: inline-block;

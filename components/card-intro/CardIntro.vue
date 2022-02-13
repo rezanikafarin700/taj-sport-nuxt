@@ -12,8 +12,8 @@
         </div>
       </div>
       <div class="parent__text">
-        <div class="parent__title">{{ product.title }}</div>
-        <div class="parent__intro">{{ product.description }}</div>
+        <h3 class="parent__title">{{ product.title }}</h3>
+        <p class="parent__intro">{{ product.description }}</p>
       </div>
     </section>
   </div>

@@ -2,7 +2,7 @@
   <div class="articles rtl">
     <header>
       <div class="line"></div>
-      <div class="title-items dastnevis">مقاله های خواندنی</div>
+      <h2 class="title-items dastnevis">مقاله های خواندنی</h2>
     </header>
     <div class="articles__group">
       <article :key="index" v-for="(article, index) in articles">

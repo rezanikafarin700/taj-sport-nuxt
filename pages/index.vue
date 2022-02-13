@@ -6,11 +6,11 @@
     <transition name="fade" mode="out-in">
       <div class="all" v-if="products.length > 0">
         <HeaderSlider :images="banners" @changeScroll="getOutput" />
-        <div class="start-intro">
+        <section class="start-intro">
           <div class="wrapper">
-            <div class="start-intro__title dastnevis">
+            <h2 class="start-intro__title dastnevis">
               ساعاتی خوش با فوتبال دستی
-            </div>
+            </h2>
             <p class="start-intro__text dastnevis">
               فوتبال دستی از بازی های نوستالژی و دوست داشتنی تمام افراد دنیا اعم
               از بانوان و آقایان می باشد که قدر مسلم اغلب ما موفق به کسب تجربه
@@ -23,13 +23,13 @@
               خواهد آمد.
             </p>
           </div>
-        </div>
+        </section>
 
-        <div class="parent-items">
+        <section class="parent-items">
           <div class="parent-items__parent-logo">
             <logo />
           </div>
-          <h1 class="title-items center dastnevis">انواع فوتبال دستی</h1>
+          <h2 class="title-items center dastnevis">دانستنی های فوتبال دستی</h2>
           <div class="wrapper">
             <div class="parent-items__items">
               <div
@@ -45,7 +45,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         <!-- <div class="container-products-intro">
         <div class="wrapper">
@@ -53,14 +53,14 @@
         </div>
       </div> -->
 
-        <div class="container-cards">
+        <section class="container-cards">
           <div class="parent-items__parent-logo">
             <Logo />
           </div>
           <div class="wrapper">
-            <h3 class="title-items center dastnevis">
+            <h1 class="title-items center dastnevis">
               آشنایی با محصولات تاج اسپرت
-            </h3>
+            </h1>
             <div class="cards space">
               <div
                 class="cards__card"
@@ -72,9 +72,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="wrapper">
+        <section class="wrapper">
           <div class="article space">
             <div class="article__image">
               <div class="article__image--ratio">
@@ -85,7 +85,7 @@
               </div>
             </div>
             <div class="article__text">
-              <div class="title-items dastnevis">تولد فوتبال دستی</div>
+              <h2 class="title-items dastnevis">تولد فوتبال دستی</h2>
               <br />
               <div class="article__intro">
                 <p class="start-intro__text para">
@@ -119,9 +119,9 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        <div class="parent-items">
+        <section class="parent-items">
           <div class="parent-items__parent-logo">
             <Logo />
           </div>
@@ -137,7 +137,7 @@
               </div>
             </div>
           </div>
-        </div>
+        </section>
         <Articles />
       </div>
     </transition>

@@ -19,7 +19,12 @@
 
       <div>
         <div class="footer__icons">
-          <a target="_blank" href="https://www.instagram.com/taj_sportss/" class="footer__icon"><Instageram /></a>
+          <a
+            target="_blank"
+            href="https://www.instagram.com/taj_sportss/"
+            class="footer__icon"
+            ><Instageram
+          /></a>
           <div class="footer__icon"><Twiter /></div>
           <div class="footer__icon"><Telegram /></div>
           <div class="footer__icon"><Whatsapp /></div>

@@ -27,13 +27,13 @@
       </p>
 
       <div class="foot__icons">
-        <div
+        <a
           target="_blank"
           href="https://www.instagram.com/taj_sportss/"
           class="foot__icon"
         >
           <Instageram />
-        </div>
+        </a>
         <div class="foot__icon"><Twiter /></div>
         <div class="foot__icon"><Telegram /></div>
         <div class="foot__icon"><Whatsapp /></div>
@@ -120,9 +120,8 @@ export default {
   }
 }
 .small-font {
-  padding: 1rem  2rem;
+  padding: 1rem 2rem;
   text-align: center;
-
 }
 .title-items {
   text-align: center;
