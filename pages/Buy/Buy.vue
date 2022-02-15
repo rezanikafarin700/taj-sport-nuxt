@@ -2,9 +2,31 @@
   <div>
     <MainLoading v-if="product == null" />
     <template v-else>
+      <div class="modal-zoom" v-if="isModalZoom">
+        <ZoomImages
+          :images="images"
+          :url="url"
+          :title="product.name + ' مدل ' + product.model"
+          :indexActive="indexActive"
+          @onCloseModalZoom="closeModalZoom"
+        />
+      </div>
+
       <section class="content">
         <div class="content__images">
           <Slider :images="images" />
+          <div class="content__imageItems">
+            <div
+              class="content__imageItem"
+              :class="{ active: indexActive == index }"
+              v-for="(image, index) in images"
+              :key="index"
+              :style="{ backgroundImage: `url(${url}${image.name})` }"
+              @click="openModalZoom(index)"
+            >
+              <div class="ratio"></div>
+            </div>
+          </div>
         </div>
         <div class="content__texts">
           <h1 class="title-items dastnevis">{{ product.name }}</h1>
@@ -52,12 +74,14 @@
 import axios from "axios";
 import Slider from "@/components/slider/Slider";
 import MainLoading from "@/components/loading/MainLoading";
+import ZoomImages from "@/components/zoom-images/ZoomImages";
 
 export default {
   name: "Buy",
   layout: "Product",
   components: {
     Slider,
+    ZoomImages,
     MainLoading
   },
 
@@ -65,12 +89,26 @@ export default {
     return {
       product: null,
       images: [],
-      productId: -1
+      productId: -1,
+      url: "",
+      isModalZoom: false,
+      indexActive: 0
     };
+  },
+
+  methods: {
+    closeModalZoom() {
+      this.isModalZoom = false;
+    },
+    openModalZoom(index) {
+      this.isModalZoom = true;
+      this.indexActive = index;
+    }
   },
 
   mounted() {
     this.productId = localStorage.getItem("productId");
+    this.url = process.env.IMAGE_URL + "products/" + this.productId + "/";
     const request1 = axios.get(
       process.env.BASE_URL + "products/" + this.productId
     );
@@ -94,6 +132,24 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.modal-zoom {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100vh;
+  background: rgba(255, 255, 255, 0.7);
+  z-index: 4;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 4rem;
+
+  @media (max-width : 768px) {
+    justify-content: flex-start;
+    padding: 2rem;
+  }
+}
 .content {
   width: 100%;
   background-color: #fff;
@@ -145,7 +201,6 @@ export default {
     padding: 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 
     @media (max-width: 1200px) {
       width: 100%;
@@ -188,7 +243,31 @@ export default {
       padding: 0.5rem 1rem;
     }
   }
+  &__imageItems {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  &__imageItem {
+    width: calc(25% - 2rem);
+    margin: 1rem;
+    flex: 0 0 auto;
+    background-position: center;
+    background-size: cover;
+    cursor: pointer;
+
+    &.active {
+      outline: 3px solid red;
+      border-radius: 0.25rem;
+    }
+
+    .ratio {
+      padding-top: 100%;
+      position: relative;
+    }
+  }
 }
+
 .title-items {
   @media (max-width: 450px) {
     font-size: 1rem;

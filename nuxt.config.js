@@ -2,6 +2,8 @@ import { Navigation } from "swiper";
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+  mode : 'spa',
+
   head: {
     title: 'taj-sport-nuxt',
     htmlAttrs: {
