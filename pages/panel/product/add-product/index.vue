@@ -41,6 +41,10 @@
 					<label for="material">جنس محصول</label>
 					<input type="text" id="material" name="material" placeholder="مثلا MDF" v-model="product.material"><br>
 
+					<label for="link">لینک خرید محصول</label>
+					<input type="text" id="link" name="link" placeholder="مثلا https://taj-sports.ir/" v-model="product.link"><br>
+
+
 					<label for="description">توضیحات</label>
 					<textarea name="description" id="description" placeholder="توضیحات" v-model="product.description"></textarea><br>
 
@@ -85,6 +89,7 @@
                 fd.append('discount', vm.product.discount)
                 fd.append('code', vm.product.code)
                 fd.append('material', vm.product.material)
+                fd.append('link', vm.product.link)
                 fd.append('description', vm.product.description)
                 for (let i = 0; i < vm.product.images.length; i++) {
                     fd.append('images[' + i + ']', vm.product.images[i]);
@@ -101,7 +106,6 @@
                     vm.errors = res.data.errors;
                     vm.$router.push({name: 'index'});
                 }).catch(err => {
-                    // window.console.log(err.response.data.errors.name);
                     vm.errors = err.response.data.errors;
                     vm.showSave = false;
                 });

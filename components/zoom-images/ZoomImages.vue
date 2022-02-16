@@ -87,13 +87,11 @@ export default {
     zoomImage(e) {
       let zoom = this.$refs.zoom;
       let d = zoom.getBoundingClientRect();
-      let x = e.clientX - d.left;
-      let y = e.clientY - d.top;
+      let x = e.clientX - d.left;/* x = e.offsetX */
+      let y = e.clientY - d.top;/* y = e.offsetY */
 
-      x = Math.round(100 / (d.width / x));
-      y = Math.round(100 / (d.height / y));
-      console.log("X = ", x);
-      console.log("Y = ", y);
+      x = Math.round(100 / (d.width / x)); /* d.width == عرض صفحه*/
+      y = Math.round(100 / (d.height / y));/* d.height == ارتفاع صفحه  */
       zoom.style.backgroundPosition = `${x}% ${y}%`;
     }
   }

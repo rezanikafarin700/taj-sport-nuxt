@@ -130,6 +130,19 @@
             v-model="product.material"
           /><br />
 
+
+          <label for="material">لینک خرید محصول</label>
+          <input
+            type="text"
+            id="link"
+            name="link"
+            placeholder="مثلا https://taj-sports.ir/"
+            v-model="product.link"
+          /><br />
+
+
+
+
           <label for="description">توضیحات</label>
           <textarea
             name="description"
@@ -204,6 +217,7 @@ export default {
       fd.append("discount", vm.product.discount);
       fd.append("code", vm.product.code);
       fd.append("material", vm.product.material);
+      fd.append("link", vm.product.link);
       fd.append("description", vm.product.description);
       fd.append("mainImage", vm.file[0]);
       for (let i = 0; i < vm.files.length; i++) {

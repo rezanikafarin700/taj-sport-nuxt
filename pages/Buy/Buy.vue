@@ -62,7 +62,7 @@
         <a
           class="content__btn"
           target="_blank"
-          href="https://basalam.com/fotballtoys/product/2095458"
+          :href="product.link"
           >خرید</a
         >
       </div>
@@ -118,6 +118,9 @@ export default {
     axios.all([request1, request2]).then(
       axios.spread((...responses) => {
         this.product = responses[0].data;
+        if(this.product.link == null){
+          this.product.link = "https://taj-sports.ir/";
+        }
         this.images = responses[1].data;
         let obj = {
           id: 0,
