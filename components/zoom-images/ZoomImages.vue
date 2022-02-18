@@ -134,10 +134,11 @@ export default {
     width: 100px;
     margin: 0.5rem;
     cursor: pointer;
-    border-bottom-left-radius: 0.25rem;
-    border-bottom-right-radius: 0.25rem;
+    border-radius: .25rem;
     background-size: cover;
     background-position: center;
+    border : 3px solid transparent;
+    transition: all .5s;
 
     .ratio {
       padding-top: 100%;
@@ -145,7 +146,7 @@ export default {
     }
 
     &.active {
-      outline: 3px solid red;
+      border-color: red;
       border-radius: 0.25rem;
     }
   }
@@ -156,9 +157,8 @@ export default {
     flex: 1 1 auto;
     background-size: cover;
     background-position: center;
-    transition: all 0.5s;
+    transition: all 1s;
     cursor: zoom-out;
-    border-bottom-right-radius: 0.25rem;
 
     @media (max-width: 768px) {
       width: 100%;

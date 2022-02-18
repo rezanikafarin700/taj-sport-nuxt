@@ -2,26 +2,27 @@
   <div>
     <MainLoading v-if="product == null" />
     <template v-else>
-      <div class="modal-zoom" v-if="isModalZoom">
-        <div class="wrapper">
-          <ZoomImages
-            :images="images"
-            :url="url"
-            :indexActive="indexActive"
-            @onCloseModalZoom="closeModalZoom"
-          />
+      <transition name="fade" mode="out-in">
+        <div class="modal-zoom" v-if="isModalZoom">
+          <div class="wrapper">
+            <ZoomImages
+              :images="images"
+              :url="url"
+              :indexActive="indexActiveItem"
+              @onCloseModalZoom="closeModalZoom"
+            />
+          </div>
         </div>
-      </div>
+      </transition>
 
       <section class="content">
         <div class="content__images">
-          <p class="rtl content__zoom-title">مشاهده تصاویر قبلی و بعدی</p>
           <Slider :images="images" />
           <p class="rtl content__zoom-title">امکان بزرگنمایی تصاویر</p>
           <div class="content__image-items">
             <div
               class="content__image-item"
-              :class="{ active: indexActive == index }"
+              :class="{ active: indexActiveItem == index }"
               v-for="(image, index) in images"
               :key="index"
               :style="{ backgroundImage: `url(${url}${image.name})` }"
@@ -90,7 +91,7 @@ export default {
       productId: -1,
       url: "",
       isModalZoom: false,
-      indexActive: 0
+      indexActiveItem: 0
     };
   },
 
@@ -100,7 +101,7 @@ export default {
     },
     openModalZoom(index) {
       this.isModalZoom = true;
-      this.indexActive = index;
+      this.indexActiveItem = index;
     }
   },
 
@@ -194,14 +195,13 @@ export default {
 
   &__images {
     width: 50%;
-    padding: 2rem;
+    padding: 0 2rem;
     display: flex;
     flex-direction: column;
 
     @media (max-width: 1200px) {
       width: 100%;
       margin-top: 3rem;
-      padding-top: 0;
     }
 
     img {
@@ -256,9 +256,11 @@ export default {
     background-position: center;
     background-size: cover;
     cursor: pointer;
+    border: 3px solid transparent;
+    transition: all 0.5s;
 
     &.active {
-      outline: 3px solid red;
+      border-color: red;
       border-radius: 0.25rem;
     }
 
