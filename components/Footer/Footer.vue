@@ -27,7 +27,7 @@
           /></a>
           <div class="footer__icon"><Twiter /></div>
           <div class="footer__icon"><Telegram /></div>
-          <div class="footer__icon"><Whatsapp /></div>
+          <a title="09186973506" target="_blank" href="https://web.whatsapp.com/" class="footer__icon"><Whatsapp /></a>
         </div>
       </div>
       <p class="small-font center rtl">

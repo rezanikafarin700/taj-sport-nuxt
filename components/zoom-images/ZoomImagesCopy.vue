@@ -1,26 +1,12 @@
 <template>
   <div class="main">
-    <div class="main__wrapper-close-icon">
-      <div @click="$emit('onCloseModalZoom')">
-        <CloseIcon bgColor="#fff" />
-      </div>
+    <div class="main__header">
+      <span @click="$emit('onCloseModalZoom')">
+        <CloseIcon />
+      </span>
+      <span class=" title-items dastnevis">{{ title }}</span>
     </div>
     <div class="main__body">
-      <div class="main__sidebar">
-        <div class="main__images">
-          <div
-            class="main__image"
-            :class="{ active: index == indexActive }"
-            v-for="(image, index) in images"
-            :key="index"
-            :style="{ backgroundImage: `url(${url}${image.name})` }"
-            @click="showImageInContent(image, index)"
-          >
-            <div class="ratio"></div>
-          </div>
-        </div>
-      </div>
-
       <div
         class="main__content"
         ref="zoom"
@@ -32,6 +18,19 @@
         }"
       >
         <div class="ratio"></div>
+      </div>
+
+      <div class="main__sidebar">
+        <div
+          class="main__image"
+          :class="{ active: index == indexActive }"
+          v-for="(image, index) in images"
+          :key="index"
+          :style="{ backgroundImage: `url(${url}${image.name})` }"
+          @click="showImageInContent(image, index)"
+        >
+          <div class="ratio"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -52,6 +51,10 @@ export default {
     url: {
       type: String,
       require: true
+    },
+    title: {
+      type: String,
+      default: "تصویر فوتبال دستی تاج اسپرت"
     },
     indexActive: {
       type: Number,
@@ -84,11 +87,11 @@ export default {
     zoomImage(e) {
       let zoom = this.$refs.zoom;
       let d = zoom.getBoundingClientRect();
-      let x = e.offsetX;  /* x = e.clientX - d.left;*/
-      let y = e.offsetY;  /* y  = e.clientY - d.top;*/
+      let x = e.clientX - d.left;/* x = e.offsetX */
+      let y = e.clientY - d.top;/* y = e.offsetY */
 
       x = Math.round(100 / (d.width / x)); /* d.width == عرض صفحه*/
-      y = Math.round(100 / (d.height / y)); /* d.height == ارتفاع صفحه  */
+      y = Math.round(100 / (d.height / y));/* d.height == ارتفاع صفحه  */
       zoom.style.backgroundPosition = `${x}% ${y}%`;
     }
   }
@@ -97,14 +100,28 @@ export default {
 
 <style lang="scss" scoped>
 .main {
+  background: #fff;
+  box-shadow: 0 0 1px 0 #999;
+  width: 70%;
   border-radius: 0.25rem;
   cursor: zoom-in;
 
-  &__wrapper-close-icon {
+  @media (max-width: 768px) {
     width: 100%;
-    padding: 1rem 0;
+    margin-top : 2rem;
+  }
+
+  &__header {
+    background: #f5f5f5;
+    height: 50px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    padding: 2rem;
+    box-shadow: 0 0 1px 0 #999;
+    cursor: auto;
   }
 
   &__body {
@@ -113,46 +130,44 @@ export default {
   }
 
   &__sidebar {
-    border-radius: 0.25rem;
-    margin-right: 1rem;
-    width: 25%;
+    width: 29%;
+    height: 100%;
     overflow: hidden;
     flex: 0 0 auto;
+    display: flex;
+    flex-wrap: wrap;
     cursor: auto;
     @media (max-width: 768px) {
-      display: none;
+      width: 100%;
     }
   }
 
-  &__images {
-    display: flex;
-    flex-wrap: wrap;
-  }
-
   &__image {
-    background: #fff;
-    width: 100px;
-    margin: 0.5rem;
+    width: calc(50% - 2rem);
+    min-width: 100px;
+    margin: 1rem;
     cursor: pointer;
     border-bottom-left-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
     background-size: cover;
     background-position: center;
 
-    .ratio {
-      padding-top: 100%;
-      position: relative;
+    @media (max-width: 768px) {
+      min-width: auto;
     }
 
     &.active {
       outline: 3px solid red;
       border-radius: 0.25rem;
     }
+    .ratio {
+      padding-top: 100%;
+      position: relative;
+    }
   }
   &__content {
     width: 70%;
-    height: 90vh;
-    border-radius: 0.25rem;
+    height: 450px;
     flex: 1 1 auto;
     background-size: cover;
     background-position: center;
@@ -162,13 +177,20 @@ export default {
 
     @media (max-width: 768px) {
       width: 100%;
-      height: 450px;
     }
 
     .ratio {
       padding-top: 100%;
       position: relative;
     }
+  }
+}
+.title-items {
+  @media (min-width: 400px) and (max-width: 768px) {
+    font-size: 1rem;
+  }
+  @media (max-width: 400px) {
+    font-size: 14px;
   }
 }
 </style>

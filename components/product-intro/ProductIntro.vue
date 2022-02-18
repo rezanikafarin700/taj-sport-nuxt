@@ -177,7 +177,7 @@ export default {
       background-position: center;
       background-size: cover;
       background-image: url("@/assets/icons/arrow-left.png");
-      z-index: 100;
+      z-index: 7;
     }
     &--right-btn {
       position: absolute;
@@ -191,7 +191,7 @@ export default {
       background-position: center;
       background-size: cover;
       background-image: url("@/assets/icons/arrow-right.png");
-      z-index: 100;
+      z-index: 7;
     }
 
     .swiper-container {
@@ -267,7 +267,7 @@ export default {
 .btn-taj {
   cursor: pointer;
   font-weight: bold;
-  z-index: 101;
+  z-index: 8;
 }
 .products__text {
   font-size: 18px;

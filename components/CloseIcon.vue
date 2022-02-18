@@ -1,13 +1,19 @@
 <template>
   <div class="close">
-    <div class="close__line rotate-left"></div>
-    <div class="close__line rotate-right"></div>
+    <div class="close__line rotate-left" :style="{background : `${bgColor}`}"></div>
+    <div class="close__line rotate-right" :style="{background : `${bgColor}`}"></div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "CloseIcon"
+  name: "CloseIcon",
+  props : {
+    bgColor : {
+      type : String,
+      default : '#1b1b1b'
+    }
+  }
 };
 </script>
 
@@ -29,6 +35,7 @@ export default {
     right: 0;
     bottom: 0;
     margin: auto;
+
 
     &.rotate-left {
       transform: rotate(45deg);

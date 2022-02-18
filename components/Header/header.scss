@@ -8,7 +8,7 @@
     height: 50px;
     position: fixed;
     top: 0;
-    z-index: 2000;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -31,6 +31,8 @@
   }
 
   &__text {
+    text-decoration: none;
+    color : #1b1b1b;
   }
 
   &__icon {
@@ -42,11 +44,10 @@
   }
 }
 
-@media (max-width: 1024px) {
-  .parent {
-    &__items {
-      justify-content: space-around;
-    }
+.wrapper{
+  @media (max-width : 1200px) {
+    width : 100%;
+    padding: 0 2rem;
   }
 }
 

@@ -22,7 +22,7 @@
               />
             </svg>
             <span style="margin: 0 0 0 2rem"></span>
-            <div @click="move" class="dastnevis parent__text">خرید</div>
+            <a href="https://taj-sports.ir/" target="_blank"  class="dastnevis parent__text">خرید</a>
             <div class="parent__icon">
               <svg
                 version="1.1"
@@ -82,9 +82,9 @@ export default {
   },
 
   methods: {
-    move() {
-      document.documentElement.scrollTop = 3900;
-    },
+    // move() {
+    //   document.documentElement.scrollTop = 3900;
+    // },
 
     goToLogin() {
       this.$router.push({ name: "login" });

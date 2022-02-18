@@ -36,7 +36,7 @@
         </a>
         <div class="foot__icon"><Twiter /></div>
         <div class="foot__icon"><Telegram /></div>
-        <div class="foot__icon"><Whatsapp /></div>
+        <a title="09186973506" target="_blank" href="https://web.whatsapp.com/" class="foot__icon"><Whatsapp /></a>
       </div>
       <p class="small-font center rtl">
         کليه حقوق محصولات و محتوای اين سایت متعلق به تاج اسپرت می باشد و هر گونه

@@ -5,7 +5,7 @@ export default {
   mode : 'spa',
 
   head: {
-    title: 'taj-sport-nuxt',
+    title: 'تاج اسپرت',
     htmlAttrs: {
       lang: 'en'
     },

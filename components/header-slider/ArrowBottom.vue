@@ -46,5 +46,18 @@
 svg{
   fill : #FFF;
 }
+
+@media (max-width : 450px) {
+  svg {
+    width : 32px;
+  }
+}
+
+@media (min-width : 449px) and (max-width : 768px) {
+  svg {
+    width : 40px;
+  }
+}
+
 </style>
 

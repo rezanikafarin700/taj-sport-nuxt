@@ -127,22 +127,10 @@ export default {
     z-index: 2;
   }
 
-  @media (max-width: 576px) {
-    padiing-bottom: 1rem;
-  }
-  @media (max-width: 1200px) {
-    margin-top: 3rem;
-  }
 
   &--ratio {
     padding-top: 100%;
     position: relative;
-    @media (min-width: 767px) and (max-width: 1200px) {
-      padding-top: 50%;
-    }
-    @media (max-width: 768px) {
-      padding-top: 100%;
-    }
   }
 
   &__left-btn {
@@ -158,10 +146,6 @@ export default {
     background-size: cover;
     background-image: url("@/assets/icons/arrow-left.png");
     z-index: 1;
-    @media (max-width: 768px) {
-      top: 40%;
-      left: 0;
-    }
   }
   &__right-btn {
     position: absolute;
@@ -176,10 +160,6 @@ export default {
     background-size: cover;
     background-image: url("@/assets/icons/arrow-right.png");
     z-index: 1;
-    @media (max-width: 768px) {
-      top: 40%;
-      right: 0;
-    }
   }
 
   .swiper-container {

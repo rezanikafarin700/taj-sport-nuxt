@@ -56,7 +56,7 @@ export default {
   }
 }
 .wrapper {
-  padding-top: 100px;
+  padding-top: 50px;
   @media (max-width: 1200px) {
     width: 100%;
     padding: 0;

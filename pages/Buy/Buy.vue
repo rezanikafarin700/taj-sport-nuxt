@@ -3,21 +3,24 @@
     <MainLoading v-if="product == null" />
     <template v-else>
       <div class="modal-zoom" v-if="isModalZoom">
-        <ZoomImages
-          :images="images"
-          :url="url"
-          :title="product.name + ' مدل ' + product.model"
-          :indexActive="indexActive"
-          @onCloseModalZoom="closeModalZoom"
-        />
+        <div class="wrapper">
+          <ZoomImages
+            :images="images"
+            :url="url"
+            :indexActive="indexActive"
+            @onCloseModalZoom="closeModalZoom"
+          />
+        </div>
       </div>
 
       <section class="content">
         <div class="content__images">
+          <p class="rtl content__zoom-title">مشاهده تصاویر قبلی و بعدی</p>
           <Slider :images="images" />
-          <div class="content__imageItems">
+          <p class="rtl content__zoom-title">امکان بزرگنمایی تصاویر</p>
+          <div class="content__image-items">
             <div
-              class="content__imageItem"
+              class="content__image-item"
               :class="{ active: indexActive == index }"
               v-for="(image, index) in images"
               :key="index"
@@ -59,12 +62,7 @@
         <button class="content__btn" @click="$router.push({ name: 'index' })">
           صفحه اصلی
         </button>
-        <a
-          class="content__btn"
-          target="_blank"
-          :href="product.link"
-          >خرید</a
-        >
+        <a class="content__btn" target="_blank" :href="product.link">خرید</a>
       </div>
     </template>
   </div>
@@ -118,7 +116,7 @@ export default {
     axios.all([request1, request2]).then(
       axios.spread((...responses) => {
         this.product = responses[0].data;
-        if(this.product.link == null){
+        if (this.product.link == null) {
           this.product.link = "https://taj-sports.ir/";
         }
         this.images = responses[1].data;
@@ -141,17 +139,11 @@ export default {
   left: 0;
   width: 100%;
   min-height: 100vh;
-  background: rgba(255, 255, 255, 0.7);
-  z-index: 4;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 11;
   display: flex;
   justify-content: center;
-  align-items: center;
-  padding-top: 4rem;
-
-  @media (max-width : 768px) {
-    justify-content: flex-start;
-    padding: 2rem;
-  }
+  padding: 0 3rem;
 }
 .content {
   width: 100%;
@@ -190,8 +182,9 @@ export default {
       flex: 1 1 auto;
       margin: 1rem;
       text-align: center;
-      font-size: 1.25rem;
+      font-size: 1.1rem;
       font-weight: 100;
+      line-height: 0.5;
 
       @media (max-width: 450px) {
         font-size: 1rem;
@@ -208,6 +201,7 @@ export default {
     @media (max-width: 1200px) {
       width: 100%;
       margin-top: 3rem;
+      padding-top: 0;
     }
 
     img {
@@ -246,13 +240,17 @@ export default {
       padding: 0.5rem 1rem;
     }
   }
-  &__imageItems {
+  &__image-items {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
+    overflow-y: scroll;
+    justify-content: center;
+    align-items: center;
   }
-  &__imageItem {
+  &__image-item {
     width: calc(25% - 2rem);
+    min-width: 100px;
     margin: 1rem;
     flex: 0 0 auto;
     background-position: center;
@@ -269,11 +267,22 @@ export default {
       position: relative;
     }
   }
+  &__zoom-title {
+    font-size: 14px;
+    font-weight: 600;
+    font-style: italic;
+  }
 }
 
 .title-items {
   @media (max-width: 450px) {
     font-size: 1rem;
+  }
+}
+
+.wrapper {
+  @media (max-width: 768px) {
+    width: 100%;
   }
 }
 </style>

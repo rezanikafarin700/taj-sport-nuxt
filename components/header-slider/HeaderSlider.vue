@@ -34,7 +34,7 @@
 </template>
 
 <script>
-import ArrowBottom from "@/components/header-slider-by-button/ArrowBottom";
+import ArrowBottom from "@/components/header-slider/ArrowBottom";
 
 export default {
   name: "HeaderSlider",
@@ -209,6 +209,12 @@ export default {
     font-size: 20px;
     border-bottom: 1px solid #fff;
     cursor: pointer;
+    @media (max-width: 768px) and (min-width: 449px) {
+      font-size: 1rem;
+    }
+    @media (max-width: 450px) {
+      font-size: 14px;
+    }
   }
 }
 
@@ -238,7 +244,7 @@ export default {
   right: 0.5rem;
   border-radius: 100%;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 9;
   background-color: #f8f8f8;
   box-shadow: 0px 0px 5px 0px #999;
   transform: rotate(-90deg);
