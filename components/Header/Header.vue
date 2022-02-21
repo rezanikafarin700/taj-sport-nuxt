@@ -1,10 +1,32 @@
 <template>
   <div class="parent">
+    <transition>
+      <div
+        class="parent__menu-shop"
+        v-show="isOpenMenuShop"
+        @mouseleave="closeMenuShop"
+      >
+        <MenuShop />
+      </div>
+    </transition>
+    <div class="parent__foot-shop">کل فروشگاه</div>
+    <transition name="fade">
+      <div class="parent__overlay" v-show="isOpenMenuShop"></div>
+    </transition>
     <header class="parent__header">
       <div class="wrapper">
         <div class="parent__items">
           <div class="parent__item">
             <HamburgerIcon />
+            <div
+              class="dastnevis parent__text range"
+              @mouseenter.stop="openMenuShop"
+              @mouseleave="closeMenuShop"
+            >
+              <div class="icon" ref="icon"><ArrowLeft /></div>
+              <span style="margin : 0 .25rem"></span>
+              <div>فروشگاه</div>
+            </div>
           </div>
           <div class="parent__item">
             <div class="dastnevis parent__line-bottom">تاج اسپرت</div>
@@ -22,7 +44,12 @@
               />
             </svg>
             <span style="margin: 0 0 0 2rem"></span>
-            <a href="https://taj-sports.ir/" target="_blank"  class="dastnevis parent__text">خرید</a>
+            <a
+              href="https://taj-sports.ir/"
+              target="_blank"
+              class="dastnevis parent__text"
+              >خرید</a
+            >
             <div class="parent__icon">
               <svg
                 version="1.1"
@@ -72,24 +99,44 @@
 </template>
 
 <script>
+import ArrowLeft from "@/components/ArrowLeft";
 import HamburgerIcon from "@/components/HamburgerIcon.vue";
+import MenuShop from "../menu-shop/MenuShop.vue";
+import MenuShop1 from "../menu-shop/MenuShop.vue";
 
 export default {
   name: "Header",
 
   components: {
-    HamburgerIcon
+    ArrowLeft,
+    HamburgerIcon,
+    MenuShop,
+    MenuShop1
+  },
+
+  data() {
+    return {
+      isOpenMenuShop: false
+    };
   },
 
   methods: {
-    // move() {
-    //   document.documentElement.scrollTop = 3900;
-    // },
-
     goToLogin() {
       this.$router.push({ name: "login" });
     },
 
+    openMenuShop() {
+      this.isOpenMenuShop = true;
+      this.$refs.icon.style.transform = "rotate(-90deg)";
+    },
+
+    closeMenuShop(e) {
+      console.log(e.clientY);
+      if (e.clientY < 50 || e.clientY > 350) {
+        this.isOpenMenuShop = false;
+        this.$refs.icon.style.transform = "rotate(0)";
+      }
+    }
   }
 };
 </script>

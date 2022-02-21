@@ -200,7 +200,8 @@ export default {
           this.$router.push({ name: "Articles-buy-Buy" });
           break;
       }
-    }
+    },
+
   },
 
   mounted() {
