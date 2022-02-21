@@ -5,6 +5,8 @@
         <div class="parent__items">
           <div class="parent__item">
             <HamburgerIcon />
+            <span style="margin: 0 0 0 2rem"></span>
+            <div class="dastnevis parent__text">فروشگاه</div>
           </div>
           <div class="parent__item">
             <div class="dastnevis parent__line-bottom">تاج اسپرت</div>
@@ -22,8 +24,17 @@
               />
             </svg>
             <span style="margin: 0 0 0 2rem"></span>
-            <a href="https://taj-sports.ir/" target="_blank"  class="dastnevis parent__text">خرید</a>
-            <div class="parent__icon">
+            <a
+              href="https://taj-sports.ir/"
+              target="_blank"
+              class="dastnevis parent__text"
+              >خرید</a
+            >
+            <a
+              class="parent__icon"
+              href="https://taj-sports.ir/"
+              target="_blank"
+            >
               <svg
                 version="1.1"
                 id="Capa_1"
@@ -63,7 +74,7 @@
                 <g></g>
                 <g></g>
               </svg>
-            </div>
+            </a>
           </div>
         </div>
       </div>
@@ -82,14 +93,9 @@ export default {
   },
 
   methods: {
-    // move() {
-    //   document.documentElement.scrollTop = 3900;
-    // },
-
     goToLogin() {
       this.$router.push({ name: "login" });
-    },
-
+    }
   }
 };
 </script>

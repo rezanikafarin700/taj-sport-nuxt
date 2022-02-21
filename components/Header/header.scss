@@ -1,5 +1,7 @@
 .parent {
   position: relative;
+  z-index: 10;
+  background: #ffffff;
 
   &__header {
     background: #ffffff;
@@ -8,7 +10,6 @@
     height: 50px;
     position: fixed;
     top: 0;
-    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +25,7 @@
   &__item {
     font-weight: 800;
     font-size: 20px;
+    min-width: 100px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -32,7 +34,7 @@
 
   &__text {
     text-decoration: none;
-    color : #1b1b1b;
+    color: #1b1b1b;
   }
 
   &__icon {
@@ -44,9 +46,9 @@
   }
 }
 
-.wrapper{
-  @media (max-width : 1200px) {
-    width : 100%;
+.wrapper {
+  @media (max-width: 1200px) {
+    width: 100%;
     padding: 0 2rem;
   }
 }
@@ -67,3 +69,4 @@
     }
   }
 }
+
