@@ -53,11 +53,7 @@
               class="dastnevis parent__text"
               >خرید</a
             >
-            <a
-              class="parent__icon"
-              href="https://taj-sports.ir/"
-              target="_blank"
-            >
+            <div class="parent__icon">
               <svg
                 version="1.1"
                 id="Capa_1"
@@ -97,7 +93,7 @@
                 <g></g>
                 <g></g>
               </svg>
-            </a>
+            </div>
           </div>
         </div>
       </div>
@@ -122,6 +118,7 @@ export default {
   data() {
     return {
       isOpenMenuShop: false,
+      color : '#222'
     };
   },
 
