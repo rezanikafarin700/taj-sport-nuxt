@@ -16,6 +16,54 @@
     box-shadow: 0px 0px 15px 0 #999;
   }
 
+  &__overlay {
+    position: fixed;
+    top: 50px;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(255, 255, 255, 0.9);
+    z-index: 8;
+    transition: all 0.5s;
+  }
+
+  &__menu-shop {
+    width: 100%;
+    background: #e0dada;
+    position: fixed;
+    top: 50;
+    left: 0;
+    z-index: 9;
+    transition: all 0.5s;
+  }
+
+  &__foot-shop {
+    background: rgba(255,255,255,.9);
+    color: #222;
+    width: 100%;
+    padding: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+    font-style: italic;
+    font-weight: bold;
+    cursor: pointer;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transition: all 0.5s;
+
+    @media (max-width : 768px) {
+        padding: 1rem 0;
+    }
+
+    &:hover {
+      background: #1aa170;
+      color: #fff;
+    }
+  }
+
   &__items {
     display: flex;
     justify-content: space-between;
@@ -69,4 +117,25 @@
     }
   }
 }
+<<<<<<< HEAD
 
+=======
+.range {
+  width: 100px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.icon {
+  transition: all 0.5s;
+}
+
+.v-enter {
+  transform: translateY(-350px);
+}
+.v-leave-to {
+  transform: translateY(-350px);
+}
+>>>>>>> menu-shop

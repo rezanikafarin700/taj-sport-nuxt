@@ -1,12 +1,35 @@
 <template>
   <div class="parent">
+    <transition>
+      <div
+        class="parent__menu-shop"
+        v-show="isOpenMenuShop"
+        @mouseleave="closeMenuShop"
+      >
+        <MenuShop />
+        <div class="parent__foot-shop dastnevis">
+          کل فروشگاه
+        </div>
+      </div>
+    </transition>
+
+    <transition name="fade">
+      <div class="parent__overlay" v-show="isOpenMenuShop"></div>
+    </transition>
     <header class="parent__header">
       <div class="wrapper">
         <div class="parent__items">
           <div class="parent__item">
             <HamburgerIcon />
-            <span style="margin: 0 0 0 2rem"></span>
-            <div class="dastnevis parent__text">فروشگاه</div>
+            <div
+              class="dastnevis parent__text range"
+              @mouseenter.stop="openMenuShop"
+              @mouseleave="closeMenuShop"
+            >
+              <div class="icon" ref="icon"><ArrowLeft /></div>
+              <span style="margin : 0 .25rem"></span>
+              <div>فروشگاه</div>
+            </div>
           </div>
           <div class="parent__item">
             <div class="dastnevis parent__line-bottom">تاج اسپرت</div>
@@ -83,18 +106,41 @@
 </template>
 
 <script>
-import HamburgerIcon from "@/components/HamburgerIcon.vue";
+import ArrowLeft from "@/components/ArrowLeft";
+import MenuShop from "@/components/menu-shop/MenuShop";
+import HamburgerIcon from "@/components/HamburgerIcon";
 
 export default {
   name: "Header",
 
   components: {
+    MenuShop,
+    ArrowLeft,
     HamburgerIcon
+  },
+
+  data() {
+    return {
+      isOpenMenuShop: false,
+    };
   },
 
   methods: {
     goToLogin() {
       this.$router.push({ name: "login" });
+    },
+
+    openMenuShop() {
+      this.isOpenMenuShop = true;
+      this.$refs.icon.style.transform = "rotate(-90deg)";
+    },
+
+    closeMenuShop(e) {
+      console.log(e.clientY);
+      if (e.clientY < 50 || e.clientY > 350) {
+        this.isOpenMenuShop = false;
+        this.$refs.icon.style.transform = "rotate(0)";
+      }
     }
   }
 };
