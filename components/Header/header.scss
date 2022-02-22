@@ -1,7 +1,5 @@
 .parent {
   position: relative;
-  z-index: 10;
-  background: #ffffff;
 
   &__header {
     background: #ffffff;
@@ -10,6 +8,7 @@
     height: 50px;
     position: fixed;
     top: 0;
+    z-index: 10;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -73,7 +72,6 @@
   &__item {
     font-weight: 800;
     font-size: 20px;
-    min-width: 100px;
     cursor: pointer;
     display: flex;
     justify-content: space-between;
@@ -117,9 +115,6 @@
     }
   }
 }
-<<<<<<< HEAD
-
-=======
 .range {
   width: 100px;
   height: 50px;
@@ -138,4 +133,3 @@
 .v-leave-to {
   transform: translateY(-350px);
 }
->>>>>>> menu-shop
