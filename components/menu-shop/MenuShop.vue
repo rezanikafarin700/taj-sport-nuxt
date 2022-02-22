@@ -1,11 +1,22 @@
 <template>
   <div class="items">
-    <div class="items__item" v-for="n in 4" :key="n">
+    <div
+      class="items__item"
+      v-for="(product, index) in products"
+      :key="index"
+      @click="goToFoosball(product.id)"
+    >
       <div class="items__image">
         <div class="items__ratio"></div>
-        <img src="@/assets/images/buy/image1.jpg" alt="" />
+        <img
+          :src="require(`@/assets/images/shop/${product.image}`)"
+          alt="فروشگاه فوتبال دستی تاج اسپرت"
+        />
       </div>
-      <div class="items__overlay"></div>
+      <div class="items__overlay">
+        <p class="dastnevis">{{ product.name }}</p>
+        <p class="dastnevis green-color">{{ product.model }} مدل</p>
+      </div>
     </div>
   </div>
 </template>
@@ -17,6 +28,16 @@ export default {
     products: {
       type: Array,
       require: true
+    }
+  },
+
+  methods: {
+    goToFoosball(id) {
+      this.$router.push({ name: "buy-Buy", params: { id: id } });
+      localStorage.setItem("productId", id);
+      if (this.$route.name == 'buy-Buy') {
+        window.location.reload(true);
+      }
     }
   }
 };
@@ -46,7 +67,7 @@ export default {
     }
   }
 
-  &__ratio{
+  &__ratio {
     position: relative;
   }
 
@@ -71,6 +92,17 @@ export default {
     top: 0;
     left: 0;
     transition: all 0.5s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1rem;
+    font-style: italic;
+    color: #222;
   }
+}
+
+.green-color {
+  color: #1aa170;
 }
 </style>

@@ -6,8 +6,11 @@
         v-show="isOpenMenuShop"
         @mouseleave="closeMenuShop"
       >
-        <MenuShop />
-        <div class="parent__foot-shop dastnevis">
+        <MenuShop :products="products" />
+        <div
+          class="parent__foot-shop dastnevis"
+          @click="$router.push({ name: 'buy-Buy'})"
+        >
           کل فروشگاه
         </div>
       </div>
@@ -118,7 +121,28 @@ export default {
   data() {
     return {
       isOpenMenuShop: false,
-      color : '#222'
+
+      products: [
+        {
+          id: 78,
+          name: "فوتبال دستی تاج اسپرت",
+          model: "S106 پایه ثابت",
+          image: "image1.jpg"
+        },
+        {
+          id: 100,
+          name: "فوتبال دستی تاج اسپرت",
+          model: "S106",
+          image: "image2.jpg"
+        },
+        {
+          id: 89,
+          name: "فوتبال دستی تاج اسپرت",
+          model: "S95",
+          image: "image3.jpg"
+        },
+        { id: 103, name: "بازی فکری کشمکش", model: "S20", image: "image4.jpg" }
+      ]
     };
   },
 
@@ -133,7 +157,6 @@ export default {
     },
 
     closeMenuShop(e) {
-      console.log(e.clientY);
       if (e.clientY < 50 || e.clientY > 350) {
         this.isOpenMenuShop = false;
         this.$refs.icon.style.transform = "rotate(0)";
