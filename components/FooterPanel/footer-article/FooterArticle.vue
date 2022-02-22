@@ -1,20 +1,30 @@
 <template>
   <div class="body" :class="{ opacity: openModal }">
-    <a :href="handlePath.prevPath" class="body__item body__left">
+    <a
+      :href="handlePath.prevPath"
+      class="body__item body__left"
+      @mouseenter="colorLeft = '#28a46c'"
+      @mouseleave="colorLeft = '#222'"
+    >
       <div class="body__image">
         <img :src="handlePath.prevImage" alt="مقاله های فوتبال دستی" />
       </div>
       <div class="body__help">
-        <ArrowGreen class="rev" />
+        <ArrowGreen :color="colorLeft" class="rev" />
         <p class="italic">Prev Article</p>
       </div>
     </a>
-    <a :href="handlePath.nextPath" class="body__item body__right">
+    <a
+      :href="handlePath.nextPath"
+      class="body__item body__right"
+      @mouseenter="colorRight = '#28a46c'"
+      @mouseleave="colorRight = '#222'"
+    >
       <div class="body__image">
         <img :src="handlePath.nextImage" alt="مقاله های فوتبال دستی" />
       </div>
       <div class="body__help">
-        <ArrowGreen />
+        <ArrowGreen :color="colorRight" />
         <p class="italic">Next Article</p>
       </div>
     </a>
@@ -30,6 +40,8 @@ export default {
   },
   data() {
     return {
+      colorLeft : '#222',
+      colorRight : '#222',
       openModal: false,
       handlePath: {},
       articlesPath: [
@@ -93,7 +105,7 @@ export default {
   justify-content: space-between;
   overflow: hidden;
   margin-top: 2rem;
-  transition: all .5s ease;
+  transition: all 0.5s ease;
 
   a {
     text-decoration: none;
@@ -101,7 +113,7 @@ export default {
   }
 
   &.opacity {
-    opacity: .1;
+    opacity: 0.1;
   }
 
   &__item {
@@ -114,7 +126,7 @@ export default {
         color: #28a46c;
       }
     }
-    @media (max-width : 768px) {
+    @media (max-width: 768px) {
       height: 130px;
     }
   }

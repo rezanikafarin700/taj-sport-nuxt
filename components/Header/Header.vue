@@ -7,9 +7,12 @@
         @mouseleave="closeMenuShop"
       >
         <MenuShop />
+        <div class="parent__foot-shop dastnevis">
+          کل فروشگاه
+        </div>
       </div>
     </transition>
-    <div class="parent__foot-shop">کل فروشگاه</div>
+
     <transition name="fade">
       <div class="parent__overlay" v-show="isOpenMenuShop"></div>
     </transition>
@@ -100,23 +103,22 @@
 
 <script>
 import ArrowLeft from "@/components/ArrowLeft";
-import HamburgerIcon from "@/components/HamburgerIcon.vue";
-import MenuShop from "../menu-shop/MenuShop.vue";
-import MenuShop1 from "../menu-shop/MenuShop.vue";
+import MenuShop from "@/components/menu-shop/MenuShop";
+import HamburgerIcon from "@/components/HamburgerIcon";
 
 export default {
   name: "Header",
 
   components: {
-    ArrowLeft,
-    HamburgerIcon,
     MenuShop,
-    MenuShop1
+    ArrowLeft,
+    HamburgerIcon
   },
 
   data() {
     return {
-      isOpenMenuShop: false
+      isOpenMenuShop: false,
+      color : '#222'
     };
   },
 

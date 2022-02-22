@@ -31,6 +31,7 @@ export default {
   &__item {
     width: 25%;
     height: 100%;
+    padding: 100px 0 120px 0;
     flex: 0 0 auto;
     display: flex;
     justify-content: center;
