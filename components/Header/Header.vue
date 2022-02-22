@@ -9,10 +9,7 @@
         <MenuShop :products="products" />
         <div
           class="parent__foot-shop dastnevis"
-          @click="$router.push({ name: 'buy-Buy'})"
-        >
-          کل فروشگاه
-        </div>
+          @click="$router.push({ name: 'buy-Buy'})">فروشگاه</div>
       </div>
     </transition>
 
