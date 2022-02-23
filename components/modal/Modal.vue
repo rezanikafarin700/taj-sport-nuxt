@@ -1,6 +1,6 @@
 <template>
   <div>
-    <transition name="fade" mode="out-in">
+    <transition name="fade">
       <div class="main" v-if="isModal">
         <ul class="main__menu rtl dastnevis">
           <li

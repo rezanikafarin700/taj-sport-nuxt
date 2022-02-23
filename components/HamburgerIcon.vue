@@ -64,7 +64,7 @@ export default {
     height: 3px;
     border-radius: 4px;
     background-color: #1b1b1b;
-    transition: all 0.2s;
+    transition: all 0.5s ease;
   }
 
   &__center {

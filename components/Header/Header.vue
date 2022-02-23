@@ -3,7 +3,7 @@
     <transition>
       <div
         class="parent__menu-shop"
-        v-show="isOpenMenuShop"
+        v-show="isOpenMenuShop && !closeMode"
         @mouseleave="closeMenuShop"
       >
         <MenuShop :products="products" />
@@ -14,7 +14,7 @@
     </transition>
 
     <transition name="fade">
-      <div class="parent__overlay" v-show="isOpenMenuShop"></div>
+      <div class="parent__overlay" v-show="isOpenMenuShop && !closeMode"></div>
     </transition>
     <header class="parent__header">
       <div class="wrapper">
@@ -118,6 +118,7 @@ export default {
   data() {
     return {
       isOpenMenuShop: false,
+      closeMode : false,
 
       products: [
         {
@@ -150,7 +151,9 @@ export default {
 
     openMenuShop() {
       this.isOpenMenuShop = true;
+      if(!this.closeMode){
       this.$refs.icon.style.transform = "rotate(-90deg)";
+      }
     },
 
     closeMenuShop(e) {
@@ -158,7 +161,17 @@ export default {
         this.isOpenMenuShop = false;
         this.$refs.icon.style.transform = "rotate(0)";
       }
+    },
+     getStatusCloseModal(event) {
+      this.closeMode = event;
     }
+  },
+
+   mounted() {
+    this.$nuxt.$on("onClick", this.getStatusCloseModal);
+  },
+  beforeDestroy() {
+    this.$nuxt.$off("onClick", this.getStatusCloseModal);
   }
 };
 </script>
