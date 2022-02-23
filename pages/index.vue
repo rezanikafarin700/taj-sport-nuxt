@@ -133,7 +133,7 @@
                 v-for="(foosball, index) in secondSeriesOfArticles"
                 :key="index"
               >
-                <CardIntro :product="foosball" textOverlay="ادامه داستان" />
+                <CardIntro :product="foosball" textOverlay="ادامه داستان"  @onClick="goToRoute(index+4)"/>
               </div>
             </div>
           </div>
@@ -198,6 +198,12 @@ export default {
           break;
         case 3:
           this.$router.push({ name: "Articles-buy-Buy" });
+          break;
+        case 4:
+          this.$router.push({ name: "Articles-federation-Federation" });
+          break;
+        case 5:
+          this.$router.push({ name: "Articles-champion-Champion" });
           break;
       }
     },

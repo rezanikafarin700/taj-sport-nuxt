@@ -40,8 +40,8 @@ export default {
   },
   data() {
     return {
-      colorLeft : '#222',
-      colorRight : '#222',
+      colorLeft: "#222",
+      colorRight: "#222",
       openModal: false,
       handlePath: {},
       articlesPath: [
@@ -68,10 +68,25 @@ export default {
         },
         {
           currentPath: "/Articles/buy/Buy",
-          nextPath: "/Articles/history/History",
+          nextPath: "/Articles/federation/Federation",
           prevPath: "/Articles/method/Method",
-          nextImage: require("@/assets/images/history/11.jpg"),
+          nextImage: require("@/assets/images/federation/image.avif"),
           prevImage: require("@/assets/images/methods/span.jpg")
+        },
+
+        {
+          currentPath: "/Articles/federation/Federation",
+          nextPath:  "/Articles/champion/Champion",
+          prevPath: "/Articles/buy/Buy",
+          nextImage: require("@/assets/images/champion/image1.avif"),
+          prevImage: require("@/assets/images/buy/image1.jpg")
+        },
+        {
+          currentPath: "/Articles/champion/Champion",
+          nextPath: "/Articles/history/History",
+          prevPath:"/Articles/federation/Federation",
+          nextImage: require("@/assets/images/history/11.jpg"),
+          prevImage: require("@/assets/images/federation/image.avif")
         }
       ]
     };
