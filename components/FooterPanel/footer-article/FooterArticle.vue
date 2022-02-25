@@ -48,9 +48,9 @@ export default {
         {
           currentPath: "/Articles/history/History",
           nextPath: "/Articles/rules/Rules",
-          prevPath: "/Articles/buy/Buy",
+          prevPath:  "/Articles/turnoment/Turnoment",
           nextImage: require("@/assets/images/rules/image1.jpg"),
-          prevImage: require("@/assets/images/buy/image1.jpg")
+          prevImage: require("@/assets/images/turnoment/image1.jpg")
         },
         {
           currentPath: "/Articles/rules/Rules",
@@ -83,11 +83,25 @@ export default {
         },
         {
           currentPath: "/Articles/champion/Champion",
-          nextPath: "/Articles/history/History",
+          nextPath:"/Articles/sport/Sport",
           prevPath:"/Articles/federation/Federation",
-          nextImage: require("@/assets/images/history/11.jpg"),
+          nextImage: require("@/assets/images/sport/image1.jpg"),
           prevImage: require("@/assets/images/federation/image.avif")
-        }
+        },
+        {
+          currentPath: "/Articles/sport/Sport",
+          nextPath: "/Articles/turnoment/Turnoment",
+          prevPath: "/Articles/champion/Champion",
+          nextImage: require("@/assets/images/turnoment/image1.jpg"),
+          prevImage: require("@/assets/images/champion/image1.avif")
+        },
+        {
+          currentPath: "/Articles/turnoment/Turnoment",
+          nextPath: "/Articles/history/History",
+          prevPath: "/Articles/sport/Sport",
+          nextImage: require("@/assets/images/history/11.jpg"),
+          prevImage: require("@/assets/images/sport/image1.jpg")
+        },
       ]
     };
   },

@@ -2,9 +2,9 @@
   <div class="wrapper-small">
     <ContinueArticle
       :images="images"
-      title="قهرمانان فوتبال دستی ایران"
+      title="فدراسیون جهانی فوتبال دستی"
       :text="text"
-      :url="`assets/images/champion`"
+      :url="`assets/images/children`"
     />
   </div>
 </template>
@@ -13,13 +13,13 @@
 import { text } from './variables';
 import ContinueArticle from "@/components/continue-article/ContinueArticle";
 export default {
-  name: "Champion",
+  name: "Children",
   layout: "Article",
   components: { ContinueArticle },
   data() {
     return {
       text,
-      images: ["image1.avif",'image2.jpg','image3.jpg'],
+      images: ["image1.jpg"],
     }
   }
 };

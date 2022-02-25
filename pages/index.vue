@@ -125,7 +125,7 @@
           <div class="parent-items__parent-logo">
             <Logo />
           </div>
-          <h2 class="title-items center dastnevis">انواع فوتبال دستی</h2>
+          <h2 class="title-items center dastnevis">دانستنی های فوتبال دستی</h2>
           <div class="wrapper">
             <div class="parent-items__items">
               <div
@@ -133,7 +133,11 @@
                 v-for="(foosball, index) in secondSeriesOfArticles"
                 :key="index"
               >
-                <CardIntro :product="foosball" textOverlay="ادامه داستان"  @onClick="goToRoute(index+4)"/>
+                <CardIntro
+                  :product="foosball"
+                  textOverlay="ادامه داستان"
+                  @onClick="goToRoute(index + 4)"
+                />
               </div>
             </div>
           </div>
@@ -205,9 +209,15 @@ export default {
         case 5:
           this.$router.push({ name: "Articles-champion-Champion" });
           break;
-      }
-    },
+        case 6:
+          this.$router.push({ name: "Articles-sport-Sport" });
+          break;
 
+        case 7:
+          this.$router.push({ name: "Articles-turnoment-Turnoment" });
+          break;
+      }
+    }
   },
 
   mounted() {
