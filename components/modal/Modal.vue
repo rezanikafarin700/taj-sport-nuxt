@@ -24,6 +24,7 @@ export default {
       isModal: true,
       items: [
         { title: "خرید", path: "", id: 0 },
+        { title: "فروشگاه", path: "buy-Buy", id: 0 },
         { title: "جستجو", path: "", id: 0 },
         { title: "ورود", path: "", id: 0 },
         { title: "ثبت نام", path: "", id: 0 },
@@ -38,6 +39,9 @@ export default {
         case 0:
           break;
         case 1:
+          this.$router.push({ name: item.path });
+          this.isModal = false;
+           this.$nuxt.$emit("onCloseModal", true);
           break;
         case 2:
           break;
@@ -48,7 +52,7 @@ export default {
         case 5:
           this.$router.push({ name: item.path });
           this.isModal = false;
-          this.$nuxt.$emit('onCloseModal',true);
+          this.$nuxt.$emit("onCloseModal", true);
           break;
       }
     }

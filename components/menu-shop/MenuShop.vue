@@ -73,7 +73,6 @@ export default {
 
   &__image {
     width: 80%;
-    // height: 80%;
 
     img {
       width: 100%;
@@ -99,6 +98,8 @@ export default {
     font-size: 1rem;
     font-style: italic;
     color: #222;
+    direction:rtl;
+    text-align: center;
   }
 }
 
