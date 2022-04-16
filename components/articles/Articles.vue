@@ -46,9 +46,12 @@ export default {
         case 1: {
         }
         case 2: {
+          this.$router.push({ name: "Articles-keshmakesh-Keshmakesh" });
+          break;
         }
         case 3: {
-          this.$router.push({ name: "Articles-a" });
+          this.$router.push({ name: "Articles-children-Children" });
+          break;
         }
       }
     }
@@ -80,8 +83,8 @@ export default {
     justify-content: center;
     padding: 2rem;
 
-    @media (max-width : 576px) {
-      width : 100%;
+    @media (max-width: 576px) {
+      width: 100%;
     }
 
     article {
@@ -155,5 +158,4 @@ footer {
     width: 70%;
   }
 }
-
 </style>

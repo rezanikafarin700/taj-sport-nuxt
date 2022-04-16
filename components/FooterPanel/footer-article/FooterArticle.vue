@@ -48,9 +48,9 @@ export default {
         {
           currentPath: "/Articles/history/History",
           nextPath: "/Articles/rules/Rules",
-          prevPath:  "/Articles/turnoment/Turnoment",
+          prevPath: "/Articles/keshmakesh/Keshmakesh",
           nextImage: require("@/assets/images/rules/image1.jpg"),
-          prevImage: require("@/assets/images/turnoment/image1.jpg")
+          prevImage: require("@/assets/images/keshmakesh/image1.jpg")
         },
         {
           currentPath: "/Articles/rules/Rules",
@@ -76,15 +76,15 @@ export default {
 
         {
           currentPath: "/Articles/federation/Federation",
-          nextPath:  "/Articles/champion/Champion",
+          nextPath: "/Articles/champion/Champion",
           prevPath: "/Articles/buy/Buy",
           nextImage: require("@/assets/images/champion/image1.avif"),
           prevImage: require("@/assets/images/buy/image1.jpg")
         },
         {
           currentPath: "/Articles/champion/Champion",
-          nextPath:"/Articles/sport/Sport",
-          prevPath:"/Articles/federation/Federation",
+          nextPath: "/Articles/sport/Sport",
+          prevPath: "/Articles/federation/Federation",
           nextImage: require("@/assets/images/sport/image1.jpg"),
           prevImage: require("@/assets/images/federation/image.avif")
         },
@@ -97,11 +97,26 @@ export default {
         },
         {
           currentPath: "/Articles/turnoment/Turnoment",
-          nextPath: "/Articles/history/History",
+          nextPath: "/Articles/children/Children",
           prevPath: "/Articles/sport/Sport",
-          nextImage: require("@/assets/images/history/11.jpg"),
+          nextImage: require("@/assets/images/children/image1.jpg"),
           prevImage: require("@/assets/images/sport/image1.jpg")
         },
+        {
+          currentPath: "/Articles/children/Children",
+          nextPath: "/Articles/keshmakesh/Keshmakesh",
+          prevPath: "/Articles/turnoment/Turnoment",
+          nextImage: require("@/assets/images/keshmakesh/image1.jpg"),
+          prevImage: require("@/assets/images/turnoment/image1.jpg")
+        },
+
+        {
+          currentPath: "/Articles/keshmakesh/Keshmakesh",
+          nextPath: "/Articles/history/History",
+          prevPath: "/Articles/children/Children",
+          nextImage: require("@/assets/images/history/11.jpg"),
+          prevImage: require("@/assets/images/children/image1.jpg")
+        }
       ]
     };
   },
